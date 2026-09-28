@@ -1,0 +1,502 @@
+[
+ {
+  "chave": "holo_v01_1992_frente",
+  "tipo": "holo",
+  "bytes": 50378
+ },
+ {
+  "chave": "holo_v01_1992_34",
+  "tipo": "holo",
+  "bytes": 47492
+ },
+ {
+  "chave": "holo_v01_1992_perfil",
+  "tipo": "holo",
+  "bytes": 30168
+ },
+ {
+  "chave": "holo_v01_1992_34costas",
+  "tipo": "holo",
+  "bytes": 33336
+ },
+ {
+  "chave": "holo_v01_1992_costas",
+  "tipo": "holo",
+  "bytes": 36538
+ },
+ {
+  "chave": "holo_v01_1992_34costas2",
+  "tipo": "holo",
+  "bytes": 34134
+ },
+ {
+  "chave": "holo_v01_1992_perfil2",
+  "tipo": "holo",
+  "bytes": 28590
+ },
+ {
+  "chave": "holo_v01_1992_342",
+  "tipo": "holo",
+  "bytes": 57450
+ },
+ {
+  "chave": "holo_v01_1992_capuz",
+  "tipo": "holo",
+  "bytes": 20746
+ },
+ {
+  "chave": "holo_v01_1992_rosto",
+  "tipo": "holo",
+  "bytes": 68392
+ },
+ {
+  "chave": "holo_v01_tnba_frente",
+  "tipo": "holo",
+  "bytes": 9810
+ },
+ {
+  "chave": "holo_v01_rosto",
+  "tipo": "holo",
+  "bytes": 27114
+ },
+ {
+  "chave": "holo_v01_fogo_frente",
+  "tipo": "holo",
+  "bytes": 66784
+ },
+ {
+  "chave": "holo_v01_btas_34",
+  "tipo": "holo",
+  "bytes": 39292
+ },
+ {
+  "chave": "holo_v01_btas_traseira",
+  "tipo": "holo",
+  "bytes": 44854
+ },
+ {
+  "chave": "holo_v01_tnba_frontal",
+  "tipo": "holo",
+  "bytes": 18688
+ },
+ {
+  "chave": "holo_v02_tdk_frente",
+  "tipo": "holo",
+  "bytes": 66608
+ },
+ {
+  "chave": "holo_v02_tdk_rosto",
+  "tipo": "holo",
+  "bytes": 70492
+ },
+ {
+  "chave": "holo_v02_begins_frente",
+  "tipo": "holo",
+  "bytes": 57266
+ },
+ {
+  "chave": "holo_v02_begins_34",
+  "tipo": "holo",
+  "bytes": 55354
+ },
+ {
+  "chave": "holo_v02_begins_perfil",
+  "tipo": "holo",
+  "bytes": 53966
+ },
+ {
+  "chave": "holo_v02_begins_capuz",
+  "tipo": "holo",
+  "bytes": 30498
+ },
+ {
+  "chave": "holo_v02_begins_rosto",
+  "tipo": "holo",
+  "bytes": 70492
+ },
+ {
+  "chave": "holo_v02_tumbler_acervo",
+  "tipo": "holo",
+  "bytes": 113524
+ },
+ {
+  "chave": "holo_v02_tumbler_34",
+  "tipo": "holo",
+  "bytes": 120118
+ },
+ {
+  "chave": "holo_v02_batpod_34",
+  "tipo": "holo",
+  "bytes": 69566
+ },
+ {
+  "chave": "holo_v03_nano_frente",
+  "tipo": "holo",
+  "bytes": 51940
+ },
+ {
+  "chave": "holo_v03_nano_34",
+  "tipo": "holo",
+  "bytes": 41008
+ },
+ {
+  "chave": "holo_v03_nano_perfil",
+  "tipo": "holo",
+  "bytes": 36794
+ },
+ {
+  "chave": "holo_v03_nano_rosto",
+  "tipo": "holo",
+  "bytes": 38156
+ },
+ {
+  "chave": "holo_v03_exo_frente",
+  "tipo": "holo",
+  "bytes": 17576
+ },
+ {
+  "chave": "holo_v03_rosto",
+  "tipo": "holo",
+  "bytes": 44342
+ },
+ {
+  "chave": "holo_v03_beyond_34",
+  "tipo": "holo",
+  "bytes": 25650
+ },
+ {
+  "chave": "holo_v04_cinza_frente",
+  "tipo": "holo",
+  "bytes": 68454
+ },
+ {
+  "chave": "holo_v04_cinza_34",
+  "tipo": "holo",
+  "bytes": 71856
+ },
+ {
+  "chave": "holo_v04_cinza_costas",
+  "tipo": "holo",
+  "bytes": 86260
+ },
+ {
+  "chave": "holo_v04_cinza_capuz",
+  "tipo": "holo",
+  "bytes": 22084
+ },
+ {
+  "chave": "holo_v04_rosto",
+  "tipo": "holo",
+  "bytes": 30266
+ },
+ {
+  "chave": "holo_v04_armadura_frente",
+  "tipo": "holo",
+  "bytes": 136782
+ },
+ {
+  "chave": "holo_v04_tanque_34",
+  "tipo": "holo",
+  "bytes": 139710
+ },
+ {
+  "chave": "holo_v05_city_frente",
+  "tipo": "holo",
+  "bytes": 50688
+ },
+ {
+  "chave": "holo_v05_rosto",
+  "tipo": "holo",
+  "bytes": 34578
+ },
+ {
+  "chave": "holo_v05_knight_frente",
+  "tipo": "holo",
+  "bytes": 77434
+ },
+ {
+  "chave": "holo_v05_knight_34",
+  "tipo": "holo",
+  "bytes": 80466
+ },
+ {
+  "chave": "holo_v05_knight_perfil",
+  "tipo": "holo",
+  "bytes": 56856
+ },
+ {
+  "chave": "holo_v05_knight_costas",
+  "tipo": "holo",
+  "bytes": 81182
+ },
+ {
+  "chave": "holo_v05_knight_perfil2",
+  "tipo": "holo",
+  "bytes": 57230
+ },
+ {
+  "chave": "holo_v05_knight_capuz",
+  "tipo": "holo",
+  "bytes": 43066
+ },
+ {
+  "chave": "holo_v05_xe_frente",
+  "tipo": "holo",
+  "bytes": 62780
+ },
+ {
+  "chave": "holo_v05_perseguicao_34",
+  "tipo": "holo",
+  "bytes": 66310
+ },
+ {
+  "chave": "holo_v05_perseguicao_lateral",
+  "tipo": "holo",
+  "bytes": 66310
+ },
+ {
+  "chave": "holo_v05_perseguicao_frontal",
+  "tipo": "holo",
+  "bytes": 112410
+ },
+ {
+  "chave": "holo_v05_batalha_34",
+  "tipo": "holo",
+  "bytes": 96486
+ },
+ {
+  "chave": "holo_v05_batalha_traseira",
+  "tipo": "holo",
+  "bytes": 77594
+ },
+ {
+  "chave": "holo_v06_padrao_frente",
+  "tipo": "holo",
+  "bytes": 126616
+ },
+ {
+  "chave": "holo_v06_padrao_34",
+  "tipo": "holo",
+  "bytes": 159516
+ },
+ {
+  "chave": "holo_v06_padrao_costas",
+  "tipo": "holo",
+  "bytes": 134156
+ },
+ {
+  "chave": "holo_v06_padrao_342",
+  "tipo": "holo",
+  "bytes": 134198
+ },
+ {
+  "chave": "holo_v06_padrao_capuz",
+  "tipo": "holo",
+  "bytes": 36518
+ },
+ {
+  "chave": "holo_v06_rosto",
+  "tipo": "holo",
+  "bytes": 68034
+ },
+ {
+  "chave": "holo_v06_capa_frente",
+  "tipo": "holo",
+  "bytes": 72870
+ },
+ {
+  "chave": "holo_v06_machado_frente",
+  "tipo": "holo",
+  "bytes": 128140
+ },
+ {
+  "chave": "holo_v06_absoluto_34",
+  "tipo": "holo",
+  "bytes": 179878
+ },
+ {
+  "chave": "holo_v07_padrao_frente",
+  "tipo": "holo",
+  "bytes": 61692
+ },
+ {
+  "chave": "holo_v07_padrao_34",
+  "tipo": "holo",
+  "bytes": 64348
+ },
+ {
+  "chave": "holo_v07_padrao_costas",
+  "tipo": "holo",
+  "bytes": 65022
+ },
+ {
+  "chave": "holo_v07_padrao_capuz",
+  "tipo": "holo",
+  "bytes": 23398
+ },
+ {
+  "chave": "holo_v07_rosto",
+  "tipo": "holo",
+  "bytes": 37068
+ },
+ {
+  "chave": "holo_v07_hush_frente",
+  "tipo": "holo",
+  "bytes": 12158
+ },
+ {
+  "chave": "holo_v07_thrasher_frente",
+  "tipo": "holo",
+  "bytes": 120076
+ },
+ {
+  "chave": "holo_v07_buster_frente",
+  "tipo": "holo",
+  "bytes": 164610
+ },
+ {
+  "chave": "holo_v07_n52_34",
+  "tipo": "holo",
+  "bytes": 61468
+ },
+ {
+  "chave": "holo_v08_padrao_frente",
+  "tipo": "holo",
+  "bytes": 64872
+ },
+ {
+  "chave": "holo_v08_rosto",
+  "tipo": "holo",
+  "bytes": 43042
+ },
+ {
+  "chave": "holo_v08_noturno_frente",
+  "tipo": "holo",
+  "bytes": 61722
+ },
+ {
+  "chave": "holo_v08_esportivo_34",
+  "tipo": "holo",
+  "bytes": 47478
+ },
+ {
+  "chave": "holo_v08_pesado_34",
+  "tipo": "holo",
+  "bytes": 50630
+ },
+ {
+  "chave": "holo_v09_lorde_frente",
+  "tipo": "holo",
+  "bytes": 39160
+ },
+ {
+  "chave": "holo_v09_rosto",
+  "tipo": "holo",
+  "bytes": 21926
+ },
+ {
+  "chave": "holo_v09_duelo_frente",
+  "tipo": "holo",
+  "bytes": 15212
+ },
+ {
+  "chave": "holo_v10_flashpoint_frente",
+  "tipo": "holo",
+  "bytes": 62294
+ },
+ {
+  "chave": "holo_v10_flashpoint_costas",
+  "tipo": "holo",
+  "bytes": 55084
+ },
+ {
+  "chave": "holo_v10_flashpoint_capuz",
+  "tipo": "holo",
+  "bytes": 22760
+ },
+ {
+  "chave": "holo_v10_flashpoint_rosto",
+  "tipo": "holo",
+  "bytes": 54948
+ },
+ {
+  "chave": "holo_v10_queda_frente",
+  "tipo": "holo",
+  "bytes": 107304
+ },
+ {
+  "chave": "holo_v10_rosto",
+  "tipo": "holo",
+  "bytes": 39832
+ },
+ {
+  "chave": "holo_v10_duelo_frente",
+  "tipo": "holo",
+  "bytes": 144386
+ },
+ {
+  "chave": "holo_v10_batmoto_34",
+  "tipo": "holo",
+  "bytes": 198686
+ },
+ {
+  "chave": "holo_v11_azrael_frente",
+  "tipo": "holo",
+  "bytes": 102942
+ },
+ {
+  "chave": "holo_v11_rosto",
+  "tipo": "holo",
+  "bytes": 109484
+ },
+ {
+  "chave": "holo_v11_azbat_frente",
+  "tipo": "holo",
+  "bytes": 102300
+ },
+ {
+  "chave": "holo_v11_azbat_34",
+  "tipo": "holo",
+  "bytes": 95852
+ },
+ {
+  "chave": "holo_v11_azbat_costas",
+  "tipo": "holo",
+  "bytes": 99868
+ },
+ {
+  "chave": "holo_v11_azbat_capuz",
+  "tipo": "holo",
+  "bytes": 22862
+ },
+ {
+  "chave": "holo_v11_garras_frente",
+  "tipo": "holo",
+  "bytes": 197096
+ },
+ {
+  "chave": "holo_v11_knightfall_34",
+  "tipo": "holo",
+  "bytes": 141184
+ },
+ {
+  "chave": "holo_v12_lego_frente",
+  "tipo": "holo",
+  "bytes": 76422
+ },
+ {
+  "chave": "holo_v12_rosto",
+  "tipo": "holo",
+  "bytes": 37484
+ },
+ {
+  "chave": "holo_v12_notebook_frente",
+  "tipo": "holo",
+  "bytes": 34796
+ },
+ {
+  "chave": "holo_v12_lego_34",
+  "tipo": "holo",
+  "bytes": 223124
+ }
+]
