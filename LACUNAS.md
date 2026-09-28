@@ -35,6 +35,25 @@ Registro honesto do que ainda não tem referência visual confiável. O slot aba
 - **Veículo de Thomas Wayne:** a referência canônica encontrada é uma motocicleta, então o carro conceitual de Flashpoint foi trocado por um modelo 3D de moto.
 - **Veículo da era Azrael:** não há registro de um Batmóvel próprio de Azrael. Foi usado o Batmóvel dos quadrinhos de dezembro de 1994, do arco "Prodigal", publicado logo após o fim da saga A Queda do Morcego.
 
+## Avatares do painel lateral
+
+Retratos 1:1 do busto gerados por `tools/processar_avatares.py`. Fontes:
+
+| Versão | Fonte |
+|-|-|
+| v01 | DCAU Wiki, `Batman (BTAS).png` |
+| v02 | Batman Wiki, `Batman close up TDKR II.jpeg` |
+| v03 | DCAU Wiki, `Batman (Terry McGinnis).png` |
+| v04 | Batman Wiki, `Batman-The Dark Knight Returns Part 1.jpeg` (filme animado de 2012) |
+| v05 | Arkham Wiki, `Knight.png` |
+| v06 | acervo local, `AbsoBatmanRender2.webp` |
+| v07 | DC Database, capa textless de Batman vol. 2 #24, de Greg Capullo |
+| v08 | Batman Wiki, `Batman2004.png` |
+| v09 | acervo local, `baixadas/justice_lord_batman.png` |
+| v10 | DC Database, `Thomas Wayne Flashpoint 0002.jpg` (Batman #75) |
+| v11 | acervo local, `novas/v11_traje_azbat2.webp` |
+| v12 | acervo local, `baixadas/lego_batman_rosto.png` |
+
 ## Origem das imagens
 
 - `novas/_origem_downloads.json`: URL, data e tamanho de cada imagem baixada das wikis Fandom.
