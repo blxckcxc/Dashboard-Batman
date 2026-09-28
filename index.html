@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="O Panteão das Sombras: showroom 3D interativo do multiverso do Batman, no estilo do supercomputador Wayne Tech.">
+<meta name="theme-color" content="#070A0E">
+<title>O Panteão das Sombras · Multiverso do Batman</title>
+<link rel="stylesheet" href="dist/app.css">
+</head>
+<body data-estacao="trajes" data-modo="real">
+
+<div id="boot" class="boot" role="dialog" aria-label="Inicialização do supercomputador">
+  <div class="boot-caixa">
+    <svg class="boot-logo" viewBox="0 0 120 50" aria-hidden="true"><path d="M60 8c3 6 5 9 9 9 2-4 1-8-1-11 7 2 13 7 15 14 6-4 14-4 22 0-7 1-12 6-13 13-5-4-12-4-17 1-3-3-8-3-11 0h-8c-3-3-8-3-11 0-5-5-12-5-17-1-1-7-6-12-13-13 8-4 16-4 22 0 2-7 8-12 15-14-2 3-3 7-1 11 4 0 6-3 9-9z"/></svg>
+    <p class="boot-marca">WAYNE TECH · MULTIVERSE SUPERCOMPUTER</p>
+    <h1 class="boot-titulo">O Panteão das Sombras</h1>
+    <p class="boot-sub">Showroom definitivo do multiverso do Batman · 12 registros · vault 3D</p>
+    <ul id="boot-log" class="boot-log" aria-live="polite"></ul>
+    <button id="boot-iniciar" class="boot-botao" type="button" disabled>INICIAR SISTEMA</button>
+    <p class="boot-dica">Ative o som para a experiência completa. Atalhos: setas, 1 2 3, T, V, R, I, C.</p>
+  </div>
+</div>
+
+<div class="app">
+  <header class="barra-topo">
+    <div class="marca">
+      <span class="marca-logo" aria-hidden="true"></span>
+      <span class="marca-txt"><strong>WAYNE TECH</strong><small>MULTIVERSE SUPERCOMPUTER</small></span>
+    </div>
+    <h1 class="titulo-topo">O PANTEÃO DAS SOMBRAS</h1>
+    <div class="telemetria">
+      <span class="tele"><small>RELÓGIO</small><b id="relogio">00:00:00</b></span>
+      <span class="tele"><small>FPS</small><b id="fps">00</b></span>
+      <span class="tele"><small>NÚCLEO</small><b id="cpu">0%</b></span>
+      <button id="btn-som" class="btn-som" type="button" aria-pressed="true"><span class="ico" aria-hidden="true"></span><span class="txt">SOM ON</span></button>
+    </div>
+  </header>
+
+  <aside class="painel painel-esq" aria-label="Arquivo do multiverso">
+    <div class="painel-titulo"><span>ARQUIVO DO MULTIVERSO</span><small>RANKING CANÔNICO</small></div>
+    <ul id="lista-versoes" class="lista-versoes"></ul>
+  </aside>
+
+  <main class="palco" aria-label="Vault 3D">
+    <div id="webgl" class="webgl"></div>
+    <img id="palco-2d" class="palco-2d" alt="">
+    <div class="palco-hud">
+      <p id="status-palco" class="status-palco">VAULT DE TRAJES</p>
+      <div class="radar-bloco">
+        <canvas id="radar" class="radar" width="170" height="170" aria-hidden="true"></canvas>
+        <div class="ameacas-bloco">
+          <p class="mini-titulo">MONITOR DE AMEAÇAS DO MULTIVERSO</p>
+          <ul id="ameacas" class="ameacas"></ul>
+        </div>
+      </div>
+      <section id="detalhe" class="detalhe" hidden aria-live="polite">
+        <button id="detalhe-fechar" class="detalhe-fechar" type="button" aria-label="Fechar">×</button>
+        <p id="detalhe-grupo" class="detalhe-grupo"></p>
+        <h3 id="detalhe-titulo" class="detalhe-titulo"></h3>
+        <p id="detalhe-texto" class="detalhe-texto"></p>
+      </section>
+      <p id="toast" class="toast" role="status"></p>
+      <section id="cockpit" class="cockpit" hidden>
+        <div class="cockpit-moldura"></div>
+        <p class="cockpit-titulo">VISÃO COCKPIT · <span id="cockpit-nome"></span></p>
+        <div class="gauges">
+          <div class="gauge"><small>VELOCIDADE</small><b id="g-vel">000</b><em>KM/H</em><span class="g-trilho"><span id="g-barra" class="g-barra"></span></span></div>
+          <div class="gauge"><small>TEMP. TURBINA</small><b id="g-temp">90°C</b></div>
+          <div class="gauge"><small>INTEGRIDADE DA BLINDAGEM</small><b id="g-blind">99.0%</b></div>
+        </div>
+        <button id="cockpit-sair" class="acao" type="button">SAIR DO COCKPIT</button>
+      </section>
+    </div>
+    <nav id="dock" class="dock" aria-label="Controles">
+      <div class="dock-linha">
+        <div class="grupo-btn" role="group" aria-label="Estação">
+          <button type="button" data-acao="estacao" data-valor="trajes" class="seg ativo">VAULT DE TRAJES</button>
+          <button type="button" data-acao="estacao" data-valor="veiculo" class="seg">GARAGEM BATMÓVEL</button>
+        </div>
+        <div class="grupo-btn" role="group" aria-label="Modo de visualização">
+          <button type="button" data-acao="modo" data-valor="real" class="seg ativo">REALISTA</button>
+          <button type="button" data-acao="modo" data-valor="wire" class="seg">WIREFRAME</button>
+          <button type="button" data-acao="modo" data-valor="xray" class="seg">RAIO-X</button>
+        </div>
+      </div>
+      <div class="dock-linha">
+        <div id="dock-variantes" class="variantes"></div>
+        <div id="dock-acoes" class="acoes"></div>
+      </div>
+    </nav>
+  </main>
+
+  <aside class="painel painel-dir" aria-label="Ficha técnica">
+    <div class="ficha-topo">
+      <p id="ficha-rank" class="ficha-rank"></p>
+      <h2 id="ficha-nome" class="ficha-nome"></h2>
+      <p id="ficha-sub" class="ficha-sub"></p>
+    </div>
+    <div id="abas" class="abas" role="tablist">
+      <button type="button" data-aba="ficha" role="tab" class="ativo">FICHA</button>
+      <button type="button" data-aba="trajes" role="tab">TRAJES</button>
+      <button type="button" data-aba="veiculo" role="tab">VEÍCULO</button>
+      <button type="button" data-aba="feitos" role="tab">FEITOS</button>
+    </div>
+    <div id="conteudo-aba" class="conteudo-aba" role="tabpanel"></div>
+    <p class="rodape-ficha">Projeto de fã, sem fins comerciais. Batman e personagens relacionados são marcas da DC Comics e Warner Bros.</p>
+  </aside>
+</div>
+
+<noscript><p class="noscript">Ative o JavaScript para abrir o supercomputador Wayne Tech.</p></noscript>
+<script src="dist/app.js"></script>
+</body>
+</html>
