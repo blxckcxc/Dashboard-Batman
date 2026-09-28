@@ -44,7 +44,7 @@ SLOTS = [
 
     ("v04_traje_cinza", "traje", "novas/v04_traje_filme.webp", (0.3, 0.0, 0.7, 1.0), "Traje cinza pesado"),
     ("v04_traje_armadura", "traje", "novas/v04_traje_armadura_hq.webp", None, "Armadura mecânica anti-Superman"),
-    ("v04_rosto", "rosto", None, None, "Bruce Wayne, 55 anos"),
+    ("v04_rosto", "rosto", "novas/v04_rosto.webp", (0.715, 0.655, 0.96, 0.975), "Bruce Wayne, 55 anos (TDKR #4)"),
     ("v04_veiculo_tanque", "veiculo", "novas/v04_veiculo_tanque.webp", (0.0, 0.08, 0.7, 1.0), "Batmóvel tanque"),
 
     ("v05_traje_city", "traje", "novas/v05_traje_city.webp", (0.0, 0.0, 0.52, 1.0), "Batsuit Arkham City"),
@@ -57,21 +57,21 @@ SLOTS = [
     ("v06_traje_padrao", "traje", "AbsoBatmanRender2.webp", None, "Traje Absoluto"),
     ("v06_traje_capa", "traje", "novas/v06_traje_capa_textless.webp", None, "Traje Absoluto com capa de combate"),
     ("v06_traje_machado", "traje", "padronizadas/v06_traje.webp", "moldura", "Traje Absoluto com machado"),
-    ("v06_rosto", "rosto", None, None, "Bruce Wayne (Absoluto)"),
-    ("v06_veiculo", "veiculo", None, None, "Veículo tático Absoluto"),
+    ("v06_rosto", "rosto", "novas/v06_rosto.webp", (0.06, 0.17, 0.94, 0.99), "Bruce Wayne (Absoluto)"),
+    ("v06_veiculo", "veiculo", "novas/v06_veiculo.webp", (0.0, 0.34, 1.0, 0.84), "Batmóvel Absoluto"),
 
     ("v07_traje_padrao", "traje", "novas/v07_traje_dcamu.webp", (0.3, 0.0, 0.72, 1.0), "Traje padrão Novos 52"),
     ("v07_traje_hush", "traje", "novas/v07_traje_novo.webp", (0.3, 0.0, 0.72, 1.0), "Traje Batman: Silêncio"),
-    ("v07_traje_thrasher", "traje", None, None, "Armadura Thrasher"),
-    ("v07_traje_buster", "traje", None, None, "Justice Buster"),
-    ("v07_rosto", "rosto", None, None, "Bruce Wayne (Novos 52)"),
+    ("v07_traje_thrasher", "traje", "novas/v07_traje_thrasher.webp", None, "Armadura Thrasher"),
+    ("v07_traje_buster", "traje", "novas/v07_traje_buster.webp", (0.04, 0.2, 0.98, 1.0), "Justice Buster"),
+    ("v07_rosto", "rosto", "novas/v07_rosto.webp", (0.2, 0.0, 0.75, 1.0), "Bruce Wayne (DCAMU)"),
     ("v07_veiculo", "veiculo", "novas/v07_veiculo.webp", None, "Batmóvel DCAMU"),
 
     ("v08_traje_padrao", "traje", "baixadas/batman_2004.png", None, "Traje The Batman 2004"),
     ("v08_traje_noturno", "traje", "baixadas/bruce_2004_civil2.jpg", None, "Traje The Batman (patrulha noturna)"),
-    ("v08_rosto", "rosto", None, None, "Bruce Wayne (The Batman 2004)"),
+    ("v08_rosto", "rosto", "novas/v08_rosto.webp", (0.12, 0.0, 0.88, 1.0), "Bruce Wayne (The Batman 2004)"),
     ("v08_veiculo_esportivo", "veiculo", "baixadas/batmobile_2004.jpg", None, "Batmóvel esportivo"),
-    ("v08_veiculo_pesado", "veiculo", None, None, "Veículo pesado"),
+    ("v08_veiculo_pesado", "veiculo", "novas/v08_veiculo_pesado.webp", None, "Batmóvel Mk III (2027)"),
 
     ("v09_traje", "traje", "baixadas/justice_lord_batman.png", (0.15, 0.0, 0.85, 1.0), "Traje Lorde Batman"),
     ("v09_traje_duelo", "traje", "novas/v09_dois_batmen.webp", None, "Lorde Batman diante de Batman"),
@@ -83,13 +83,13 @@ SLOTS = [
     ("v10_traje_duelo", "traje", "novas/v10_traje_fp5.webp", None, "Batman Flashpoint em combate"),
     ("v10_rosto", "rosto", "novas/v10_rosto_filme.webp", (0.22, 0.0, 0.78, 1.0), "Thomas Wayne"),
     ("v10_civil", "civil", "baixadas/thomas_wayne_civil.jpg", (0.0, 0.0, 1.0, 0.62), "Thomas Wayne (civil)"),
-    ("v10_veiculo", "veiculo", None, None, "Batmóvel Flashpoint"),
+    ("v10_veiculo", "veiculo", "novas/v10_veiculo.webp", (0.3, 0.0, 1.0, 1.0), "Batmoto de Thomas Wayne"),
 
     ("v11_traje_azrael", "traje", "baixadas/azrael_traje_alt.jpg", None, "Azrael"),
     ("v11_traje_azbat", "traje", "novas/v11_traje_azbat2.webp", None, "AzBat (A Queda do Morcego)"),
     ("v11_traje_azbat_garras", "traje", "novas/v11_traje_azbat.webp", None, "AzBat com garras"),
     ("v11_rosto", "rosto", "baixadas/azrael_traje.jpg", (0.0, 0.0, 1.0, 0.7), "Jean-Paul Valley"),
-    ("v11_veiculo", "veiculo", None, None, "Batmóvel da era Knightfall"),
+    ("v11_veiculo", "veiculo", "novas/v11_veiculo.webp", (0.0, 0.17, 1.0, 1.0), "Batmóvel de 1994"),
 
     ("v12_traje", "traje", "baixadas/lego_batman_rosto.png", None, "Batman Lego"),
     ("v12_traje_notebook", "traje", "baixadas/lego_batmobile_real.jpg", None, "Batman Lego no Batcomputador"),

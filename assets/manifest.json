@@ -173,11 +173,11 @@
  {
   "chave": "v04_rosto",
   "tipo": "rosto",
-  "rotulo": "Bruce Wayne, 55 anos",
-  "status": "placeholder",
-  "origem": null,
-  "url": null,
-  "bytes": 16174
+  "rotulo": "Bruce Wayne, 55 anos (TDKR #4)",
+  "status": "imagem",
+  "origem": "novas/v04_rosto.webp",
+  "url": "https://static.wikia.nocookie.net/marvel_dc/images/7/70/Batman_Earth-31_034.jpg",
+  "bytes": 42534
  },
  {
   "chave": "v04_veiculo_tanque",
@@ -273,19 +273,19 @@
   "chave": "v06_rosto",
   "tipo": "rosto",
   "rotulo": "Bruce Wayne (Absoluto)",
-  "status": "placeholder",
-  "origem": null,
-  "url": null,
-  "bytes": 16786
+  "status": "imagem",
+  "origem": "novas/v06_rosto.webp",
+  "url": "https://static.wikia.nocookie.net/marvel_dc/images/f/f0/Bruce_Wayne_%28Absolute_Universe%29_0005.png",
+  "bytes": 37428
  },
  {
   "chave": "v06_veiculo",
   "tipo": "veiculo",
-  "rotulo": "Veículo tático Absoluto",
-  "status": "placeholder",
-  "origem": null,
-  "url": null,
-  "bytes": 28160
+  "rotulo": "Batmóvel Absoluto",
+  "status": "imagem",
+  "origem": "novas/v06_veiculo.webp",
+  "url": "https://static.wikia.nocookie.net/marvel_dc/images/8/87/Batmobile_0064.jpeg",
+  "bytes": 94088
  },
  {
   "chave": "v07_traje_padrao",
@@ -309,28 +309,28 @@
   "chave": "v07_traje_thrasher",
   "tipo": "traje",
   "rotulo": "Armadura Thrasher",
-  "status": "placeholder",
-  "origem": null,
-  "url": null,
-  "bytes": 21326
+  "status": "imagem",
+  "origem": "novas/v07_traje_thrasher.webp",
+  "url": "https://static.wikia.nocookie.net/batman/images/4/4c/Courtofowlsarmor.jpg",
+  "bytes": 145478
  },
  {
   "chave": "v07_traje_buster",
   "tipo": "traje",
   "rotulo": "Justice Buster",
-  "status": "placeholder",
-  "origem": null,
-  "url": null,
-  "bytes": 20880
+  "status": "imagem",
+  "origem": "novas/v07_traje_buster.webp",
+  "url": "https://static.wikia.nocookie.net/batman/images/f/fa/JusticeBuster8.png",
+  "bytes": 139740
  },
  {
   "chave": "v07_rosto",
   "tipo": "rosto",
-  "rotulo": "Bruce Wayne (Novos 52)",
-  "status": "placeholder",
-  "origem": null,
-  "url": null,
-  "bytes": 16326
+  "rotulo": "Bruce Wayne (DCAMU)",
+  "status": "imagem",
+  "origem": "novas/v07_rosto.webp",
+  "url": "https://static.wikia.nocookie.net/dcanimatedmovieuniverse/images/6/64/.png",
+  "bytes": 12784
  },
  {
   "chave": "v07_veiculo",
@@ -363,10 +363,10 @@
   "chave": "v08_rosto",
   "tipo": "rosto",
   "rotulo": "Bruce Wayne (The Batman 2004)",
-  "status": "placeholder",
-  "origem": null,
-  "url": null,
-  "bytes": 17160
+  "status": "imagem",
+  "origem": "novas/v08_rosto.webp",
+  "url": "https://static.wikia.nocookie.net/the-batman-cartoon/images/0/08/Bru.PNG",
+  "bytes": 14604
  },
  {
   "chave": "v08_veiculo_esportivo",
@@ -380,11 +380,11 @@
  {
   "chave": "v08_veiculo_pesado",
   "tipo": "veiculo",
-  "rotulo": "Veículo pesado",
-  "status": "placeholder",
-  "origem": null,
-  "url": null,
-  "bytes": 23160
+  "rotulo": "Batmóvel Mk III (2027)",
+  "status": "imagem",
+  "origem": "novas/v08_veiculo_pesado.webp",
+  "url": "https://static.wikia.nocookie.net/the-batman-cartoon/images/0/0b/Car3.PNG",
+  "bytes": 38668
  },
  {
   "chave": "v09_traje",
@@ -470,11 +470,11 @@
  {
   "chave": "v10_veiculo",
   "tipo": "veiculo",
-  "rotulo": "Batmóvel Flashpoint",
-  "status": "placeholder",
-  "origem": null,
-  "url": null,
-  "bytes": 23550
+  "rotulo": "Batmoto de Thomas Wayne",
+  "status": "imagem",
+  "origem": "novas/v10_veiculo.webp",
+  "url": "https://static.wikia.nocookie.net/marvel_dc/images/6/67/Batcycle_13.png",
+  "bytes": 49222
  },
  {
   "chave": "v11_traje_azrael",
@@ -515,11 +515,11 @@
  {
   "chave": "v11_veiculo",
   "tipo": "veiculo",
-  "rotulo": "Batmóvel da era Knightfall",
-  "status": "placeholder",
-  "origem": null,
-  "url": null,
-  "bytes": 28342
+  "rotulo": "Batmóvel de 1994",
+  "status": "imagem",
+  "origem": "novas/v11_veiculo.webp",
+  "url": "https://static.wikia.nocookie.net/marvel_dc/images/d/d8/Batmobile_0015.jpg",
+  "bytes": 128352
  },
  {
   "chave": "v12_traje",
