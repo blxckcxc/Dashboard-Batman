@@ -2,13 +2,35 @@
 // poeira em partículas e feixe de escaneamento.
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 import { Reflector } from 'three/addons/objects/Reflector.js';
 import { CSS2DRenderer } from 'three/addons/renderers/CSS2DRenderer.js';
 
 export const MOBILE = matchMedia('(max-width: 900px)').matches || /Mobi|Android/i.test(navigator.userAgent);
 
 const easeInOut = (x) => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2);
+
+// Estúdio azul-noite para os reflexos PBR: sala escura com softbox superior fria, faixas laterais
+// em azul profundo, uma linha de rim ciano e um toque âmbar. Vira mapa de ambiente via PMREM.
+function estudioAzulNoite() {
+  const s = new THREE.Scene();
+  const sala = new THREE.Mesh(new THREE.BoxGeometry(30, 14, 30), new THREE.MeshBasicMaterial({ color: 0x04060a, side: THREE.BackSide }));
+  sala.position.y = 5;
+  s.add(sala);
+  const painel = (w, h, cor, forca, pos, rot) => {
+    const m = new THREE.Mesh(new THREE.PlaneGeometry(w, h), new THREE.MeshBasicMaterial({ color: new THREE.Color(cor).multiplyScalar(forca), side: THREE.DoubleSide }));
+    m.position.set(...pos);
+    m.rotation.set(...rot);
+    s.add(m);
+  };
+  painel(12, 3.5, 0xe0ecff, 2.6, [0, 11.8, 0], [Math.PI / 2, 0, 0]);
+  painel(3, 12, 0xbfd4ff, 1.4, [0, 11.7, -6], [Math.PI / 2, 0, 0]);
+  painel(16, 2.4, 0x1e3a8a, 3.2, [-14.8, 5, 0], [0, Math.PI / 2, 0]);
+  painel(16, 2.0, 0x1d4ed8, 2.6, [14.8, 4.2, 2], [0, -Math.PI / 2, 0]);
+  painel(22, 0.5, 0x22d3ee, 3.6, [0, 2.6, -14.8], [0, 0, 0]);
+  painel(20, 1.4, 0x3b82f6, 1.3, [0, 8, 14.8], [0, Math.PI, 0]);
+  painel(5, 0.4, 0xf59e0b, 2.6, [7, 1.1, 14.8], [0, Math.PI, 0]);
+  return s;
+}
 
 export class Cena {
   constructor(container) {
@@ -37,9 +59,9 @@ export class Cena {
     this.scene.fog = new THREE.FogExp2(0x070a0e, 0.045);
 
     const pmrem = new THREE.PMREMGenerator(r);
-    this.envMap = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+    this.envMap = pmrem.fromScene(estudioAzulNoite(), 0.03).texture;
     this.scene.environment = this.envMap;
-    this.scene.environmentIntensity = 0.55;
+    this.scene.environmentIntensity = 0.8;
 
     this.camera = new THREE.PerspectiveCamera(38, 1, 0.05, 200);
     this.camera.position.set(6.5, 3.2, 8.5);
@@ -282,7 +304,7 @@ export class Cena {
     this.veu.material.color = new THREE.Color(tipo === 'xray' ? 0x0b1f3f : 0x05080d);
     if (this.refletor) this.refletor.visible = tipo === 'real';
     this.veu.material.opacity = tipo === 'real' ? (MOBILE ? 1 : 0.8) : 1;
-    this.scene.environmentIntensity = tipo === 'real' ? 0.55 : 0.0;
+    this.scene.environmentIntensity = tipo === 'real' ? 0.8 : 0.0;
   }
 
   loop(aoQuadro) {

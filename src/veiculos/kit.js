@@ -1,9 +1,16 @@
 // Kit de peças paramétricas para os veículos procedurais. Convenção: frente em +X, altura em +Y, largura em Z.
 import * as THREE from 'three';
+import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
 
 export const MAT = {
   pintura: (cor = 0x0d1117, metal = 0.85, rug = 0.3) =>
     new THREE.MeshPhysicalMaterial({ color: cor, metalness: metal, roughness: rug, clearcoat: 1, clearcoatRoughness: 0.12 }),
+  // preto acetinado com verniz e brilho azul-noite nas bordas, como a pintura dos Batmóveis animados
+  acetinado: (cor = 0x0b0e16, brilho = 0x1e40af) =>
+    new THREE.MeshPhysicalMaterial({
+      color: cor, metalness: 0.45, roughness: 0.34, clearcoat: 1, clearcoatRoughness: 0.08,
+      sheen: 0.45, sheenColor: new THREE.Color(brilho), sheenRoughness: 0.5, envMapIntensity: 1.15,
+    }),
   fosco: (cor = 0x151a22, metal = 0.55, rug = 0.62) => new THREE.MeshStandardMaterial({ color: cor, metalness: metal, roughness: rug }),
   borracha: () => new THREE.MeshStandardMaterial({ color: 0x0b0b0d, metalness: 0, roughness: 0.93 }),
   cromo: () => new THREE.MeshStandardMaterial({ color: 0xb7c3d4, metalness: 1, roughness: 0.16 }),
@@ -56,20 +63,23 @@ export function casco({ pontos, largura, mat, bevel = 0.05, afunilar = null, pap
   return peca(geo, mat, papel);
 }
 
-// Roda: pneu por torno (perfil arredondado com sulcos) + aro metálico com raios. Eixo em Z.
-export function roda({ raio = 0.42, largura = 0.34, aro = 0.62, matAro = MAT.cromo(), raios = 5, sulcos = 18 }) {
+// Roda: pneu por torno (perfil arredondado com sulcos), aro vazado com raios, disco de freio e pinça
+// visíveis por entre os raios. Eixo em Z; a face externa fica em +Z.
+export function roda({ raio = 0.42, largura = 0.34, aro = 0.62, matAro = MAT.cromo(), raios = 5, sulcos = 18, freio = true, corPinca = 0x991b1b }) {
   const g = new THREE.Group();
   const perfil = [];
   const ri = raio * aro;
-  const n = 24;
+  const n = 28;
   perfil.push(new THREE.Vector2(ri, -largura / 2));
+  perfil.push(new THREE.Vector2(ri + (raio - ri) * 0.35, -largura / 2 - largura * 0.03));
   for (let i = 0; i <= n; i += 1) {
     const a = -Math.PI / 2 + (i / n) * Math.PI;
-    const bojo = 0.93 + 0.07 * Math.cos(a);
+    const bojo = 0.9 + 0.1 * Math.pow(Math.cos(a), 0.6);
     perfil.push(new THREE.Vector2(raio * bojo, Math.sin(a) * largura / 2));
   }
+  perfil.push(new THREE.Vector2(ri + (raio - ri) * 0.35, largura / 2 + largura * 0.03));
   perfil.push(new THREE.Vector2(ri, largura / 2));
-  const pneuGeo = new THREE.LatheGeometry(perfil, 48);
+  const pneuGeo = new THREE.LatheGeometry(perfil, 64);
   // sulcos da banda de rodagem
   const p = pneuGeo.attributes.position;
   for (let i = 0; i < p.count; i += 1) {
@@ -88,17 +98,48 @@ export function roda({ raio = 0.42, largura = 0.34, aro = 0.62, matAro = MAT.cro
   pneu.rotation.x = Math.PI / 2;
   g.add(pneu);
 
-  const cubo = peca(new THREE.CylinderGeometry(ri * 0.98, ri * 0.98, largura * 0.82, 32), matAro, 'metal');
-  cubo.rotation.x = Math.PI / 2;
-  g.add(cubo);
-  const centro = peca(new THREE.CylinderGeometry(ri * 0.28, ri * 0.28, largura * 0.9, 16), MAT.fosco(0x0b0f17, 0.9, 0.3), 'metal');
-  centro.rotation.x = Math.PI / 2;
-  g.add(centro);
+  // tambor do aro, aberto, com o fundo escuro do lado de dentro
+  const tambor = peca(new THREE.CylinderGeometry(ri, ri, largura * 0.84, 48, 1, true), MAT.fosco(0x10141b, 0.85, 0.4), 'metal');
+  tambor.material.side = THREE.DoubleSide;
+  tambor.rotation.x = Math.PI / 2;
+  g.add(tambor);
+  const fundo = peca(new THREE.CircleGeometry(ri, 48), MAT.fosco(0x07090d, 0.6, 0.7), 'metal');
+  fundo.position.z = -largura * 0.3;
+  g.add(fundo);
+  const borda = peca(new THREE.TorusGeometry(ri * 0.985, largura * 0.045, 10, 64), matAro, 'metal');
+  borda.position.z = largura * 0.4;
+  g.add(borda);
+  // raios em cunha, saindo do cubo até a borda
+  const matRaio = matAro;
   for (let i = 0; i < raios; i += 1) {
-    const r = caixa(ri * 1.5, ri * 0.16, 0.05, MAT.fosco(0x1b2330, 0.9, 0.35), [0, 0, largura * 0.42], [0, 0, (i / raios) * Math.PI], 'metal');
-    const r2 = r.clone();
-    r2.position.z = -largura * 0.42;
-    g.add(r, r2);
+    const a = (i / raios) * Math.PI * 2;
+    const raioGeo = new THREE.BoxGeometry(ri * 0.82, ri * 0.13, largura * 0.08);
+    const pos = raioGeo.attributes.position;
+    for (let k = 0; k < pos.count; k += 1) {
+      // afina em direção à borda
+      const t = (pos.getX(k) + ri * 0.41) / (ri * 0.82);
+      pos.setY(k, pos.getY(k) * (1.25 - 0.55 * t));
+    }
+    raioGeo.computeVertexNormals();
+    const rr = peca(raioGeo, matRaio, 'metal');
+    rr.position.set(Math.cos(a) * ri * 0.55, Math.sin(a) * ri * 0.55, largura * 0.36);
+    rr.rotation.z = a;
+    g.add(rr);
+  }
+  const cubo = peca(new THREE.CylinderGeometry(ri * 0.2, ri * 0.24, largura * 0.2, 24), matAro, 'metal');
+  cubo.rotation.x = Math.PI / 2;
+  cubo.position.z = largura * 0.36;
+  g.add(cubo);
+  if (freio) {
+    // disco ventilado e pinça, visíveis por entre os raios
+    const disco = peca(new THREE.CylinderGeometry(ri * 0.8, ri * 0.8, largura * 0.07, 48), MAT.fosco(0x5b6472, 0.95, 0.32), 'metal');
+    disco.rotation.x = Math.PI / 2;
+    disco.position.z = largura * 0.12;
+    g.add(disco);
+    const pinca = peca(new RoundedBoxGeometry(ri * 0.32, ri * 0.56, largura * 0.2, 2, ri * 0.06), MAT.pintura(corPinca, 0.3, 0.35), 'metal');
+    pinca.position.set(-ri * 0.52, ri * 0.28, largura * 0.14);
+    pinca.rotation.z = 0.5;
+    g.add(pinca);
   }
   g.userData.raio = raio;
   return g;
