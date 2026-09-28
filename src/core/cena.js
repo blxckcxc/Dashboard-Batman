@@ -45,7 +45,7 @@ export class Cena {
     r.toneMapping = THREE.ACESFilmicToneMapping;
     r.toneMappingExposure = 1.05;
     r.shadowMap.enabled = !MOBILE;
-    r.shadowMap.type = THREE.PCFSoftShadowMap;
+    r.shadowMap.type = THREE.PCFShadowMap;
     container.appendChild(r.domElement);
     this.renderer = r;
 

@@ -13,6 +13,8 @@ import { renderEstudo } from './ui/estudo.js';
 import { Sfx } from './audio/sfx.js';
 import { VERSOES } from './data/versoes.js';
 import { ASSETS } from './_gerado/assets.js';
+import { MODELOS_GLB } from './_gerado/modelos.js';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { Hud, ROTULO_VEIC } from './ui/hud.js';
 
 const $ = (s) => document.querySelector(s);
@@ -242,6 +244,7 @@ class App {
     let v = this.veiculos.get(chave);
     if (!v) {
       v = construirVeiculo(vd.modelo, vd.modo);
+      if (MODELOS_GLB[vd.modelo]) this.substituirPorGlb(v, MODELOS_GLB[vd.modelo]);
       registrar(v.grupo);
       this.veiculos.set(chave, v);
     }
@@ -283,6 +286,40 @@ class App {
     const centro = caixa.getCenter(new THREE.Vector3());
     const d = (Math.max(tam.x, tam.z, tam.y * 1.6) * 1.2 + 3.6) * this.fatorTela();
     this.cena.voarPara(new THREE.Vector3(centro.x + d * 0.62, centro.y + 1.2 + d * 0.12, d * 0.74), new THREE.Vector3(centro.x, centro.y * 0.85, 0), 1.3);
+  }
+
+  // troca a malha procedural por um GLB embutido no build, mantendo âncoras, turbinas e câmera de cockpit
+  substituirPorGlb(v, base64) {
+    const bin = Uint8Array.from(atob(base64), (c) => c.charCodeAt(0));
+    const falhou = (erro) => console.warn('GLB inválido, mantido o modelo procedural', erro);
+    try {
+      new GLTFLoader().parse(bin.buffer, '', (gltf) => this.aplicarGlb(v, gltf), falhou);
+    } catch (erro) {
+      falhou(erro);
+    }
+  }
+
+  aplicarGlb(v, gltf) {
+    const caixaProc = new THREE.Box3().setFromObject(v.grupo);
+    const modelo = gltf.scene;
+    const caixa = new THREE.Box3().setFromObject(modelo);
+    const escala = caixaProc.getSize(new THREE.Vector3()).x / Math.max(1e-3, caixa.getSize(new THREE.Vector3()).x);
+    modelo.scale.setScalar(escala);
+    const c2 = new THREE.Box3().setFromObject(modelo);
+    modelo.position.x -= (c2.min.x + c2.max.x) / 2;
+    modelo.position.z -= (c2.min.z + c2.max.z) / 2;
+    modelo.position.y -= c2.min.y;
+    const turbinas = new Set(v.turbinas);
+    for (const filho of [...v.grupo.children]) if (!turbinas.has(filho)) v.grupo.remove(filho);
+    modelo.traverse((o) => {
+      if (o.isMesh) {
+        o.castShadow = true;
+        o.userData.papel = 'casco';
+      }
+    });
+    v.grupo.add(modelo);
+    registrar(v.grupo);
+    aplicar(v.grupo, this.estado.modo);
   }
 
   atualizarLink() {
@@ -328,8 +365,13 @@ class App {
     const vd = this.estado.versao.veiculos[this.estado.veiculoIdx];
     const chaves = Object.keys(this.veiculo.ancoras).filter((k) => vd.textos[k]);
     this.veiculo.grupo.updateMatrixWorld(true);
-    const k = this.fatorTela();
-    const vista = { pos: new THREE.Vector3(7.2 * k, 4.8, 12.2 * k), alvo: new THREE.Vector3(0, 2.0, 0) };
+    // distância que enquadra o arco de plantas na largura e na altura do palco
+    this.cena.redimensionar();
+    const cam = this.cena.camera;
+    const tg = Math.tan((cam.fov * Math.PI) / 360);
+    const d = Math.max(4.6 / tg, 6.4 / (tg * cam.aspect));
+    const dir = new THREE.Vector3(0.5, 0.32, 0.8).normalize();
+    const vista = { pos: dir.multiplyScalar(d).add(new THREE.Vector3(0, 2.0, 0)), alvo: new THREE.Vector3(0, 2.0, 0) };
     this.cad.mostrar(this.veiculo, chaves, vista);
     this.sfx.scan();
     this.hud.toast('PLANTA CAD · VISTA EXPLODIDA DAS SUBMONTAGENS');

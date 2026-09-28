@@ -245,15 +245,15 @@ export class PlantaCad {
     const raio = Math.max(tam.x, tam.z) * 0.5;
     // arranjo em arco atrás e acima do veículo, como numa prancha de engenharia
     const em = (lado, alto, fundo) => centro.clone().setY(0)
-      .addScaledVector(direita, lado * (raio + 1.4))
+      .addScaledVector(direita, lado * (raio + 0.9))
       .addScaledVector(frente, fundo)
       .setY(topo + alto);
     const lugares = {
-      turbina: em(-0.95, 1.7, 0.8),
-      blindagem: em(0.0, 2.5, 1.9),
-      cockpit: em(0.95, 1.7, 0.8),
-      rodas: em(-0.75, 0.3, -2.8),
-      armas: em(0.75, 0.4, -2.8),
+      turbina: em(-1.1, 1.7, 0.8),
+      blindagem: em(-0.2, 2.5, 1.9),
+      cockpit: em(0.7, 1.7, 0.8),
+      rodas: em(-0.9, 0.3, -2.8),
+      armas: em(0.55, 0.4, -2.8),
     };
     for (const chave of chaves) {
       const construir = CONSTRUTORES[chave];

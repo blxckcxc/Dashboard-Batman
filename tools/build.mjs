@@ -17,6 +17,17 @@ for (const m of manifest) assets[m.chave] = `data:image/webp;base64,${readFileSy
 mkdirSync(r('src', '_gerado'), { recursive: true });
 writeFileSync(r('src', '_gerado', 'assets.js'), `export const ASSETS = ${JSON.stringify(assets)};\n`);
 
+// 1b. modelos GLB opcionais: assets/modelos/<modelo>.glb substitui o veículo procedural de mesmo nome
+const glbs = {};
+if (existsSync(r('assets', 'modelos'))) {
+  for (const n of readdirSync(r('assets', 'modelos'))) {
+    if (extname(n).toLowerCase() !== '.glb') continue;
+    glbs[n.slice(0, -4)] = readFileSync(r('assets', 'modelos', n)).toString('base64');
+  }
+}
+writeFileSync(r('src', '_gerado', 'modelos.js'), `export const MODELOS_GLB = ${JSON.stringify(glbs)};\n`);
+if (Object.keys(glbs).length) console.log(`modelos GLB: ${Object.keys(glbs).join(', ')}`);
+
 // 2. fontes locais (subconjunto latino, woff2) embutidas no CSS
 const FONTES = [
   ['Orbitron', 'orbitron', [600, 700, 800]],

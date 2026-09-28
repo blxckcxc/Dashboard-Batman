@@ -94,8 +94,9 @@ export class Vault {
     for (const p of this.pedestais) {
       p.g.position.set(...p.pos);
       this.grupo.add(p.g);
+      // rótulo acima da cabeça da figura, longe dos painéis inferiores
       const r = rotulo(p.nome, 'cad-rotulo titulo');
-      r.position.set(0, -0.05, p.g === this.pedestais[0].g ? 1.25 : 1.0);
+      r.position.set(0, p.escala === 1 ? 3.72 : 3.15, 0);
       p.g.add(r);
     }
     // luzes de contorno próprias do vault (ciano à esquerda, âmbar à direita)
