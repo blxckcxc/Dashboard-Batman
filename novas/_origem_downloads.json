@@ -278,5 +278,68 @@
   "bytes": 210026,
   "data": "2026-09-28",
   "formato_servido": "WEBP (conversão automática da CDN, resolução original)"
+ },
+ {
+  "arquivo": "novas/av_v01.webp",
+  "url": "https://static.wikia.nocookie.net/dcanimated/images/2/21/Batman_%28BTAS%29.png",
+  "bytes": 30372,
+  "data": "2026-09-28",
+  "formato_servido": "WEBP (conversão automática da CDN, resolução original)"
+ },
+ {
+  "arquivo": "novas/av_v02.webp",
+  "url": "https://static.wikia.nocookie.net/batman/images/5/56/Batman_close_up_TDKR_II.jpeg",
+  "bytes": 86652,
+  "data": "2026-09-28",
+  "formato_servido": "WEBP (conversão automática da CDN, resolução original)"
+ },
+ {
+  "arquivo": "novas/av_v03.webp",
+  "url": "https://static.wikia.nocookie.net/dcanimated/images/4/4c/Batman_%28Terry_McGinnis%29.png",
+  "bytes": 20776,
+  "data": "2026-09-28",
+  "formato_servido": "WEBP (conversão automática da CDN, resolução original)"
+ },
+ {
+  "arquivo": "novas/av_v04.webp",
+  "url": "https://static.wikia.nocookie.net/batman/images/6/64/Batman-The_Dark_Knight_Returns_Part_1.jpeg",
+  "bytes": 91918,
+  "data": "2026-09-28",
+  "formato_servido": "WEBP (conversão automática da CDN, resolução original)"
+ },
+ {
+  "arquivo": "novas/av_v05.webp",
+  "url": "https://static.wikia.nocookie.net/arkhamcity/images/6/6b/Knight.png",
+  "bytes": 133038,
+  "data": "2026-09-28",
+  "formato_servido": "WEBP (conversão automática da CDN, resolução original)"
+ },
+ {
+  "arquivo": "novas/av_v07.webp",
+  "url": "https://static.wikia.nocookie.net/marvel_dc/images/e/e9/Batman_Vol_2_24_Textless.jpg",
+  "bytes": 160954,
+  "data": "2026-09-28",
+  "formato_servido": "WEBP (conversão automática da CDN, resolução original)"
+ },
+ {
+  "arquivo": "novas/av_v08.webp",
+  "url": "https://static.wikia.nocookie.net/batman/images/5/55/Batman2004.png",
+  "bytes": 42712,
+  "data": "2026-09-28",
+  "formato_servido": "WEBP (conversão automática da CDN, resolução original)"
+ },
+ {
+  "arquivo": "novas/av_v10.webp",
+  "url": "https://static.wikia.nocookie.net/marvel_dc/images/b/ba/Thomas_Wayne_Flashpoint_0002.jpg",
+  "bytes": 943534,
+  "data": "2026-09-28",
+  "formato_servido": "WEBP (conversão automática da CDN, resolução original)"
+ },
+ {
+  "arquivo": "novas/ref_btas_lateral.webp",
+  "url": "https://static.wikia.nocookie.net/batman/images/e/e0/Batmobile_%28BTAS%29_02.jpg",
+  "bytes": 31868,
+  "data": "2026-09-28",
+  "formato_servido": "WEBP (conversão automática da CDN, resolução original)"
  }
 ]

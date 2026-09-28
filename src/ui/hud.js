@@ -32,7 +32,7 @@ export class Hud {
   montarLista() {
     const ul = $('#lista-versoes');
     ul.innerHTML = VERSOES.map((v) => {
-      const thumb = ASSETS[v.trajes[0].img];
+      const thumb = ASSETS[`avatar_${v.id}`] || ASSETS[v.trajes[0].img];
       const top = v.ranking <= 5;
       return `<li><button type="button" class="item-versao${top ? ' top' : ''}" data-id="${v.id}" aria-label="${esc(v.nome)}">
         <span class="rank">${top ? ordinal(v.ranking) : String(v.ranking).padStart(2, '0')}</span>

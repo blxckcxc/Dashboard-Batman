@@ -4,6 +4,7 @@
   "description": "O Panteão das Sombras: showroom 3D do multiverso do Batman (Wayne Tech HUD e 3D Vault)",
   "scripts": {
     "assets": "python tools/processar_assets.py",
+    "avatares": "python tools/processar_avatares.py",
     "build": "node tools/build.mjs"
   },
   "repository": {

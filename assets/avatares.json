@@ -1,0 +1,74 @@
+[
+ {
+  "chave": "avatar_v01",
+  "tipo": "avatar",
+  "origem": "novas/av_v01.webp",
+  "bytes": 14634
+ },
+ {
+  "chave": "avatar_v02",
+  "tipo": "avatar",
+  "origem": "novas/av_v02.webp",
+  "bytes": 26162
+ },
+ {
+  "chave": "avatar_v03",
+  "tipo": "avatar",
+  "origem": "novas/av_v03.webp",
+  "bytes": 14992
+ },
+ {
+  "chave": "avatar_v04",
+  "tipo": "avatar",
+  "origem": "novas/av_v04.webp",
+  "bytes": 21630
+ },
+ {
+  "chave": "avatar_v05",
+  "tipo": "avatar",
+  "origem": "novas/av_v05.webp",
+  "bytes": 27896
+ },
+ {
+  "chave": "avatar_v06",
+  "tipo": "avatar",
+  "origem": "AbsoBatmanRender2.webp",
+  "bytes": 48132
+ },
+ {
+  "chave": "avatar_v07",
+  "tipo": "avatar",
+  "origem": "novas/av_v07.webp",
+  "bytes": 36334
+ },
+ {
+  "chave": "avatar_v08",
+  "tipo": "avatar",
+  "origem": "novas/av_v08.webp",
+  "bytes": 22090
+ },
+ {
+  "chave": "avatar_v09",
+  "tipo": "avatar",
+  "origem": "baixadas/justice_lord_batman.png",
+  "bytes": 16530
+ },
+ {
+  "chave": "avatar_v10",
+  "tipo": "avatar",
+  "origem": "novas/av_v10.webp",
+  "bytes": 72856
+ },
+ {
+  "chave": "avatar_v11",
+  "tipo": "avatar",
+  "origem": "novas/v11_traje_azbat2.webp",
+  "bytes": 65910
+ },
+ {
+  "chave": "avatar_v12",
+  "tipo": "avatar",
+  "origem": "baixadas/lego_batman_rosto.png",
+  "bytes": 30082
+ }
+]

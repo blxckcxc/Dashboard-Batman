@@ -11,6 +11,7 @@ const HIFEN_DUPLO = [String.fromCharCode(45, 45), String.fromCharCode(45, 32, 45
 
 // 1. assets como data URL
 const manifest = JSON.parse(readFileSync(r('assets', 'manifest.json'), 'utf8'));
+if (existsSync(r('assets', 'avatares.json'))) manifest.push(...JSON.parse(readFileSync(r('assets', 'avatares.json'), 'utf8')));
 const assets = {};
 for (const m of manifest) assets[m.chave] = `data:image/webp;base64,${readFileSync(r('assets', `${m.chave}.webp`)).toString('base64')}`;
 mkdirSync(r('src', '_gerado'), { recursive: true });
