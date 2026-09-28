@@ -4,6 +4,7 @@ import { Cena } from './core/cena.js';
 import { registrar, aplicar } from './core/modos.js';
 import { Hotspots } from './core/hotspots.js';
 import { construirVeiculo } from './veiculos/catalogo.js';
+import { PlantaCad } from './veiculos/cad.js';
 import { Pod } from './trajes/pod.js';
 import { Sfx } from './audio/sfx.js';
 import { VERSOES } from './data/versoes.js';
@@ -55,8 +56,10 @@ class App {
     this.cena.scene.add(this.pod.grupo);
     this.garagem = new THREE.Group();
     this.cena.scene.add(this.garagem);
+    this.cad = new PlantaCad(this.cena);
     this.cena.atualizaveis.add((dt, t) => {
       this.pod.atualizar(dt, t);
+      this.cad.atualizar(dt, t);
       if (this.veiculo) {
         for (const tb of this.veiculo.turbinas) tb.userData.atualizar(dt, t);
         if (this.veiculo.atualizar) this.veiculo.atualizar(dt, t);
@@ -176,6 +179,7 @@ class App {
       return;
     }
     this.hotspots.limpar();
+    this.cad.limpar();
     if (s.estacao === 'trajes') this.mostrarTraje();
     else this.mostrarVeiculo();
     this.cena.escanear(s.estacao === 'trajes' ? 3.6 : 2.2);
@@ -231,7 +235,7 @@ class App {
     const dados = {};
     for (const [k, pos] of Object.entries(v.ancoras)) {
       if (!vd.textos[k]) continue;
-      dados[k] = { titulo: ROTULO_VEIC[k], texto: vd.textos[k], grupo: vd.nome.toUpperCase() };
+      dados[k] = { titulo: ROTULO_VEIC[k], texto: vd.textos[k], grupo: vd.nome.toUpperCase(), chave: k };
       this.hotspots.adicionar(v.grupo, pos, dados[k]);
     }
     // clique direto nas peças: pneus, vidros, turbina e carroceria
@@ -274,6 +278,32 @@ class App {
   aoHotspot(d) {
     this.sfx.clique();
     this.hud.detalhe(d);
+    // no veículo, o ponto de inspeção abre a planta CAD explodida da submontagem
+    if (d.chave && this.tem3d && this.veiculo && this.estado.estacao === 'veiculo' && !this.emCockpit) {
+      this.veiculo.grupo.updateMatrixWorld(true);
+      if (this.cad.mostrar(this.veiculo, [d.chave])) this.sfx.scan();
+    }
+  }
+
+  // todas as plantas CAD do veículo ao redor dele, com a câmera recuada
+  planta() {
+    if (!this.tem3d || !this.veiculo || this.estado.estacao !== 'veiculo') return;
+    if (this.cad.ativas.length > 1) {
+      this.cad.limpar();
+      this.hud.renderDock();
+      return;
+    }
+    if (this.emCockpit) this.sairCockpit(true);
+    const vd = this.estado.versao.veiculos[this.estado.veiculoIdx];
+    const chaves = Object.keys(this.veiculo.ancoras).filter((k) => vd.textos[k]);
+    this.veiculo.grupo.updateMatrixWorld(true);
+    const k = this.fatorTela();
+    const vista = { pos: new THREE.Vector3(7.2 * k, 4.8, 12.2 * k), alvo: new THREE.Vector3(0, 2.0, 0) };
+    this.cad.mostrar(this.veiculo, chaves, vista);
+    this.sfx.scan();
+    this.hud.toast('PLANTA CAD · VISTA EXPLODIDA DAS SUBMONTAGENS');
+    this.cena.voarPara(vista.pos, vista.alvo, 1.4);
+    this.hud.renderDock();
   }
 
   definirModo(m) {
@@ -377,6 +407,10 @@ class App {
     if (this.estado.modo !== 'xray') this.definirModo('xray');
     const txt = vd.textos.blindagem || 'Sem dados de blindagem.';
     this.hud.detalhe({ titulo: 'Blindagem balística', texto: `${txt} Camadas internas destacadas em âmbar no modo raio-X.`, grupo: vd.nome.toUpperCase() });
+    if (this.tem3d) {
+      this.veiculo.grupo.updateMatrixWorld(true);
+      this.cad.mostrar(this.veiculo, ['blindagem']);
+    }
   }
 
   transformar(para) {
@@ -410,6 +444,7 @@ class App {
       else if (k === 'r' && this.estado.estacao === 'trajes') this.revelar();
       else if (k === 'i' && this.estado.estacao === 'veiculo') this.ignicao();
       else if (k === 'c' && this.estado.estacao === 'veiculo') (this.emCockpit ? this.sairCockpit() : this.entrarCockpit());
+      else if (k === 'p' && this.estado.estacao === 'veiculo') this.planta();
       else if (k === 'escape') {
         this.sairCockpit();
         this.hud.fecharDetalhe();
@@ -438,6 +473,7 @@ function aplicarLink(app, l) {
   else if (l.acao === 'ignicao') app.ignicao();
   else if (l.acao === 'transformar') app.transformar();
   else if (l.acao === 'cockpit') app.entrarCockpit();
+  else if (l.acao === 'planta') app.planta();
   if (app.cena) app.cena.instantaneo = false;
 }
 

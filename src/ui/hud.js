@@ -137,6 +137,7 @@ export class Hud {
       else if (a === 'turbina') app.ignicao();
       else if (a === 'blindagem') app.blindagem();
       else if (a === 'transformar') app.transformar();
+      else if (a === 'planta') app.planta();
       else if (a === 'variante') {
         if (app.estado.estacao === 'trajes') app.selecionarTraje(Number(b.dataset.valor));
         else app.selecionarVeiculo(Number(b.dataset.valor));
@@ -158,6 +159,7 @@ export class Hud {
       : `<button type="button" data-acao="cockpit" class="acao">COCKPIT</button>
          <button type="button" data-acao="turbina" class="acao ambar">${this.app.turbinaAcesa ? 'DESLIGAR MOTOR' : 'IGNIÇÃO'}</button>
          <button type="button" data-acao="blindagem" class="acao">BLINDAGEM</button>
+         <button type="button" data-acao="planta" class="acao ciano${this.app.cad && this.app.cad.ativas.length > 1 ? ' ativo' : ''}">PLANTA CAD</button>
          ${this.app.veiculo && this.app.veiculo.transformar ? `<button type="button" data-acao="transformar" class="acao ciano">${s.modoArkham === 'tanque' ? 'MODO PERSEGUIÇÃO' : 'MODO TANQUE'}</button>` : ''}`;
     $('#dock-acoes').innerHTML = acoes;
   }
@@ -175,6 +177,7 @@ export class Hud {
 
   fecharDetalhe() {
     $('#detalhe').hidden = true;
+    if (this.app.cad && this.app.cad.ativas.length === 1) this.app.cad.limpar();
   }
 
   toast(msg) {

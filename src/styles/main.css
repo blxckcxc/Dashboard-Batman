@@ -93,6 +93,8 @@ body.sem-webgl .palco-2d { display: block; }
 .ameacas .nv0 { color: #22C55E; } .ameacas .nv1 { color: #38BDF8; } .ameacas .nv2 { color: #F59E0B; } .ameacas .nv3 { color: #EF4444; animation: pisca 1s steps(2) infinite; }
 
 /* hotspots 3D */
+.cad-rotulo { font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 10px; letter-spacing: .16em; color: #7dd3fc; text-shadow: 0 0 8px rgba(56,189,248,.7); white-space: nowrap; pointer-events: none; padding: 1px 6px; border-left: 2px solid rgba(245,158,11,.8); background: rgba(7,10,14,.45); }
+.cad-rotulo.titulo { font-family: 'Orbitron', sans-serif; font-size: 10px; color: #F59E0B; text-shadow: 0 0 10px rgba(245,158,11,.6); border-left-color: #38BDF8; }
 .hotspot { position: relative; width: 26px; height: 26px; padding: 0; border: 0; background: transparent; pointer-events: auto; }
 .hotspot .hs-ponto { position: absolute; inset: 8px; border-radius: 50%; background: #F59E0B; box-shadow: 0 0 12px #F59E0B; }
 .hotspot .hs-anel { position: absolute; inset: 0; border-radius: 50%; border: 1.5px solid #F59E0B; animation: anel 1.8s ease-out infinite; }

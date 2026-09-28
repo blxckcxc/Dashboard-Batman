@@ -2,6 +2,7 @@
 // { grupo, ancoras: { cockpit, turbina, blindagem, rodas, armas }, turbinas: [], camCockpit: { pos, olhar }, atualizar?, transformar? }
 import * as THREE from 'three';
 import { MAT, peca, caixa, casco, roda, turbina, canopy, aleta, farol, internos, morcegoFrontal } from './kit.js';
+import { btas } from './modelos/animados.js';
 
 const V = (x, y, z) => new THREE.Vector3(x, y, z);
 
@@ -108,7 +109,8 @@ const afunilarPadrao = (frente = 0.55, tras = 0.85, topo = 0.82) => (u, v) => {
 };
 
 const MODELOS = {
-  btas: () => carro({
+  btas,
+  btasAntigo: () => carro({
     cor: 0x0a0d13, largura: 1.7, raioRoda: 0.42, largRoda: 0.32,
     perfil: [[-3.1, 0.28], [-3.15, 0.64], [-2.85, 0.82], [-1.15, 0.86], [-0.75, 0.96], [0.35, 0.92], [0.85, 0.78], [2.7, 0.64], [3.12, 0.5], [3.15, 0.32], [2.9, 0.2], [-2.9, 0.2]],
     afunilar: afunilarPadrao(0.45, 0.9, 0.8),
