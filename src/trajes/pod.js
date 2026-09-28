@@ -48,9 +48,20 @@ function escala(aspectoTex) {
 }
 
 export class Pod {
-  constructor(cena) {
+  // soHolograma: só o plano holográfico, sem pedestal nem tubo (usado para o cartão de identidade do vault)
+  constructor(cena, { soHolograma = false } = {}) {
     this.cena = cena;
     const g = new THREE.Group();
+    this.aneis = [];
+    if (!soHolograma) this.criarEstrutura(g);
+    this.criarHolograma(g);
+    this.grupo = g;
+    this.progressoAlvo = 0;
+    this.glitchT = 0;
+    this.surgirT = 1;
+  }
+
+  criarEstrutura(g) {
     const metal = MAT.fosco(0x10151d, 0.95, 0.28);
     const pedestal = peca(new THREE.CylinderGeometry(1.25, 1.45, 0.45, 64), metal, 'metal');
     pedestal.position.y = 0.35;
@@ -84,7 +95,6 @@ export class Pod {
       g.add(col);
     }
     // anéis de escaneamento que percorrem o tubo
-    this.aneis = [];
     for (let i = 0; i < 2; i += 1) {
       const r = new THREE.Mesh(new THREE.TorusGeometry(1.1, 0.012, 6, 96), new THREE.MeshBasicMaterial({ color: 0x38bdf8, transparent: true, opacity: 0.8, blending: THREE.AdditiveBlending }));
       r.rotation.x = Math.PI / 2;
@@ -92,7 +102,9 @@ export class Pod {
       g.add(r);
       this.aneis.push(r);
     }
+  }
 
+  criarHolograma(g) {
     const vazio = new THREE.DataTexture(new Uint8Array([7, 10, 14, 255]), 1, 1);
     vazio.needsUpdate = true;
     this.mat = new THREE.ShaderMaterial({
@@ -121,11 +133,6 @@ export class Pod {
     halo.position.z = -0.05;
     halo.userData.ignorarModo = true;
     this.plano.add(halo);
-
-    this.grupo = g;
-    this.progressoAlvo = 0;
-    this.glitchT = 0;
-    this.surgirT = 1;
   }
 
   definir(tex, glitchar = true) {

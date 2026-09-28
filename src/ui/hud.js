@@ -178,6 +178,7 @@ export class Hud {
   fecharDetalhe() {
     $('#detalhe').hidden = true;
     if (this.app.cad && this.app.cad.ativas.length === 1) this.app.cad.limpar();
+    if (this.app.vault) this.app.vault.limparEstudo();
   }
 
   toast(msg) {

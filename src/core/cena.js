@@ -87,6 +87,8 @@ export class Cena {
 
     this.redimensionar();
     window.addEventListener('resize', () => this.redimensionar());
+    // o palco muda de tamanho sem evento de janela quando o CSS termina de carregar ou o layout reflui
+    if (window.ResizeObserver) new ResizeObserver(() => this.redimensionar()).observe(container);
   }
 
   criarLuzes() {
@@ -267,6 +269,12 @@ export class Cena {
 
   // anima câmera e alvo até a posição desejada
   voarPara(posicao, alvo, dur = 1.4, aoFim) {
+    // um voo novo substitui o anterior, para que um destino antigo não sobrescreva o atual
+    if (this.vooAtual) {
+      const i = this.animacoes.indexOf(this.vooAtual);
+      if (i >= 0) this.animacoes.splice(i, 1);
+      this.vooAtual = null;
+    }
     if (this.instantaneo) {
       this.camera.position.copy(posicao);
       this.controls.target.copy(alvo);
@@ -275,7 +283,7 @@ export class Cena {
     }
     const p0 = this.camera.position.clone();
     const a0 = this.controls.target.clone();
-    this.animar(dur, (k) => {
+    this.vooAtual = this.animar(dur, (k) => {
       const e = easeInOut(k);
       this.camera.position.lerpVectors(p0, posicao, e);
       this.controls.target.lerpVectors(a0, alvo, e);
@@ -283,7 +291,9 @@ export class Cena {
   }
 
   animar(dur, passo, aoFim) {
-    this.animacoes.push({ t: 0, dur, passo, aoFim });
+    const a = { t: 0, dur, passo, aoFim };
+    this.animacoes.push(a);
+    return a;
   }
 
   tema(tipo) {

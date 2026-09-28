@@ -6,6 +6,10 @@ import { Hotspots } from './core/hotspots.js';
 import { construirVeiculo } from './veiculos/catalogo.js';
 import { PlantaCad } from './veiculos/cad.js';
 import { Pod } from './trajes/pod.js';
+import { Vault } from './trajes/vault.js';
+import { CapuzVistas } from './trajes/capuz.js';
+import { presetDo } from './trajes/presets.js';
+import { renderEstudo } from './ui/estudo.js';
 import { Sfx } from './audio/sfx.js';
 import { VERSOES } from './data/versoes.js';
 import { ASSETS } from './_gerado/assets.js';
@@ -51,15 +55,23 @@ class App {
   iniciar3d() {
     this.cena = new Cena($('#webgl'));
     this.hotspots = new Hotspots(this.cena, (d) => this.aoHotspot(d));
-    this.pod = new Pod(this.cena);
+    this.vault = new Vault(this.cena);
+    // cartão holográfico de identidade, ao lado da cabeça da figura central
+    this.pod = new Pod(this.cena, { soHolograma: true });
     registrar(this.pod.grupo);
+    this.pod.grupo.position.set(1.55, 1.18, 0.9);
+    this.pod.grupo.scale.setScalar(0.62);
+    this.pod.grupo.visible = false;
     this.cena.scene.add(this.pod.grupo);
+    this.vistas = new CapuzVistas($('#capuz-vistas'));
     this.garagem = new THREE.Group();
     this.cena.scene.add(this.garagem);
     this.cad = new PlantaCad(this.cena);
     this.cena.atualizaveis.add((dt, t) => {
       this.pod.atualizar(dt, t);
       this.cad.atualizar(dt, t);
+      this.vault.atualizar(dt, t);
+      if (this.estado.estacao === 'trajes') this.vistas.render(t);
       if (this.veiculo) {
         for (const tb of this.veiculo.turbinas) tb.userData.atualizar(dt, t);
         if (this.veiculo.atualizar) this.veiculo.atualizar(dt, t);
@@ -186,30 +198,44 @@ class App {
     this.inicializado = true;
   }
 
-  async mostrarTraje() {
+  mostrarTraje() {
     const s = this.estado;
     const v = s.versao;
-    const idx = s.trajeIdx;
-    const t = v.trajes[idx];
-    this.pod.grupo.visible = true;
+    const t = v.trajes[s.trajeIdx];
     this.garagem.visible = false;
-    this.hud.status(`VAULT DE TRAJES · ${t.nome.toUpperCase()}`);
-    const tex = await this.textura(t.img);
-    if (s.versao !== v || s.trajeIdx !== idx || s.estacao !== 'trajes') return;
-    this.pod.definir(tex);
-    this.pod.materializar();
+    this.vault.visivel = true;
+    this.pod.grupo.visible = false;
+    this.cena.controls.enableRotate = false;
+    this.hud.status(`VAULT DE TRAJES · ${t.nome.toUpperCase()} · MODELO 3D WAYNE TECH`);
+    const preset = presetDo(v.id, t.id);
+    const m = this.vault.mostrar(`${v.id}:${t.id}`, preset);
+    aplicar(this.vault.grupo, s.modo);
+    this.vistas.definir(m.cabeca, this.cena.envMap);
+    renderEstudo(preset, $('#estudo-esq'), $('#estudo-dir'));
+    // pontos de inspeção ancorados no manequim central; clicar na peça abre o mesmo estudo
+    const fig = this.vault.figuras[0];
     for (const h of t.hotspots) {
-      this.hotspots.adicionar(this.pod.plano, this.pod.pontoNoPlano(h.x, h.y), { titulo: h.titulo, texto: h.texto, grupo: `TRAJE · ${t.nome.toUpperCase()}` });
+      const pos = m.ancoras[h.id];
+      if (!pos) continue;
+      const dados = { titulo: h.titulo, texto: h.texto, grupo: `TRAJE · ${t.nome.toUpperCase()}`, chave: h.id };
+      this.hotspots.adicionar(fig, pos, dados);
+      for (const o of m.pecas[h.id] || []) o.traverse((q) => { if (q.isMesh) this.hotspots.alvo(q, dados); });
     }
-    this.hotspots.alvo(this.pod.plano, { titulo: t.nome, texto: 'Holograma de referência do traje. Selecione um ponto para a análise de materiais.', grupo: v.nome.toUpperCase() });
-    const k = this.fatorTela();
-    this.cena.voarPara(new THREE.Vector3(1.9 * k, 2.6, 7.6 * k), new THREE.Vector3(0, 2.1, 0), 1.3);
+    // distância que enquadra os três pedestais na largura e a figura central na altura
+    this.cena.redimensionar();
+    const cam = this.cena.camera;
+    const tg = Math.tan((cam.fov * Math.PI) / 360);
+    const d = Math.max(3.7 / tg, 4.05 / (tg * cam.aspect));
+    this.cena.voarPara(new THREE.Vector3(0, 2.25, d), new THREE.Vector3(0, 1.82, 0), 1.3);
   }
 
   mostrarVeiculo() {
     const s = this.estado;
     const vd = s.versao.veiculos[s.veiculoIdx];
     this.pod.grupo.visible = false;
+    this.vault.visivel = false;
+    this.vault.limparEstudo();
+    this.cena.controls.enableRotate = true;
     this.garagem.visible = true;
     this.turbinaAcesa = false;
     const chave = `${s.versao.id}:${vd.modelo}`;
@@ -278,6 +304,11 @@ class App {
   aoHotspot(d) {
     this.sfx.clique();
     this.hud.detalhe(d);
+    // no vault, o ponto de inspeção abre o estudo explodido da peça
+    if (d.chave && this.tem3d && this.estado.estacao === 'trajes') {
+      if (this.vault.estudar(d.chave, d.titulo)) this.sfx.scan();
+      return;
+    }
     // no veículo, o ponto de inspeção abre a planta CAD explodida da submontagem
     if (d.chave && this.tem3d && this.veiculo && this.estado.estacao === 'veiculo' && !this.emCockpit) {
       this.veiculo.grupo.updateMatrixWorld(true);
@@ -312,6 +343,7 @@ class App {
     s.modo = m;
     if (this.tem3d) {
       aplicar(this.pod.grupo, m);
+      aplicar(this.vault.grupo, m);
       this.pod.modo(m);
       if (this.veiculo) aplicar(this.veiculo.grupo, m);
       this.cena.tema(m);
@@ -329,15 +361,22 @@ class App {
     if (!this.tem3d) return;
     const e = this.etapas();
     const s = this.estado;
-    const atual = e[s.etapaId];
     const prox = (s.etapaId + 1) % e.length;
     s.etapaId = prox;
-    Promise.all([this.textura(atual.chave), this.textura(e[prox].chave)]).then(([a, b]) => {
-      this.pod.definir(a, false);
-      this.pod.identidade(b);
-      this.pod.revelar(true);
-    });
-    this.hotspots.visivel(e[prox].rotulo === 'traje');
+    // o capuz 3D se dissolve e o cartão holográfico mostra o rosto, o traje civil e o mentor do acervo
+    const rotulo = e[prox].rotulo;
+    this.vault.definirDissolucao(rotulo === 'traje' ? 0 : 1);
+    if (rotulo === 'traje') {
+      this.pod.grupo.visible = false;
+    } else {
+      this.textura(e[prox].chave).then((tex) => {
+        if (s.etapaId !== prox) return;
+        this.pod.grupo.visible = true;
+        this.pod.definir(tex, rotulo !== 'rosto');
+        this.pod.materializar();
+      });
+    }
+    this.hotspots.visivel(rotulo === 'traje');
     this.sfx.pneumatico();
     const v = s.versao;
     const msgs = {
