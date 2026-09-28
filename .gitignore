@@ -1,0 +1,14 @@
+node_modules/
+desktop.ini
+*.log
+# acervo bruto: fica local; o repositório versiona só assets/ (processado) e o registro de origem
+/baixadas/
+/padronizadas/
+/novas/*
+!/novas/_origem_downloads.json
+/*.jpg
+/*.jpeg
+/*.png
+/*.webp
+/*.avif
+src/_gerado/

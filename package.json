@@ -1,0 +1,28 @@
+{
+  "name": "dashboard-batman-multiverso",
+  "version": "1.0.0",
+  "description": "O Panteão das Sombras: showroom 3D do multiverso do Batman (Wayne Tech HUD e 3D Vault)",
+  "scripts": {
+    "assets": "python tools/processar_assets.py",
+    "build": "node tools/build.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blxckcxc/Dashboard-Batman.git"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/blxckcxc/Dashboard-Batman/issues"
+  },
+  "homepage": "https://github.com/blxckcxc/Dashboard-Batman#readme",
+  "devDependencies": {
+    "@fontsource/inter": "^5.3.0",
+    "@fontsource/orbitron": "^5.3.0",
+    "@fontsource/rajdhani": "^5.3.0",
+    "esbuild": "^0.28.2",
+    "three": "^0.186.1"
+  },
+  "private": true
+}
