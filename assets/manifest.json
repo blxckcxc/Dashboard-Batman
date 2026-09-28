@@ -1,0 +1,569 @@
+[
+ {
+  "chave": "v01_traje_1992",
+  "tipo": "traje",
+  "rotulo": "Clássico BTAS 1992",
+  "status": "imagem",
+  "origem": "images.jpg",
+  "url": null,
+  "bytes": 49872
+ },
+ {
+  "chave": "v01_traje_tnba",
+  "tipo": "traje",
+  "rotulo": "The New Batman Adventures 1997",
+  "status": "imagem",
+  "origem": "novas/v01_traje_tnba_wiki.webp",
+  "url": "https://static.wikia.nocookie.net/dcanimated/images/5/58/Batman_%28TNBA%29.png",
+  "bytes": 15534
+ },
+ {
+  "chave": "v01_traje_fogo",
+  "tipo": "traje",
+  "rotulo": "Traje à prova de fogo",
+  "status": "imagem",
+  "origem": "novas/v01_traje_fogo.webp",
+  "url": "https://static.wikia.nocookie.net/dcanimated/images/7/77/Fireproof_Batsuit.png",
+  "bytes": 31624
+ },
+ {
+  "chave": "v01_rosto",
+  "tipo": "rosto",
+  "rotulo": "Bruce Wayne (DCAU)",
+  "status": "imagem",
+  "origem": "which-version-of-bruce-wayne-from-the-animated-series-do-v0-8b8za9bnyijb1.webp",
+  "url": null,
+  "bytes": 46500
+ },
+ {
+  "chave": "v01_veiculo_btas",
+  "tipo": "veiculo",
+  "rotulo": "Batmóvel BTAS 1992",
+  "status": "imagem",
+  "origem": "novas/v01_veiculo_btas.webp",
+  "url": "https://static.wikia.nocookie.net/dcanimated/images/8/85/2nd_Batmobile.png",
+  "bytes": 23104
+ },
+ {
+  "chave": "v01_veiculo_tnba",
+  "tipo": "veiculo",
+  "rotulo": "Batmóvel TNBA 1997",
+  "status": "imagem",
+  "origem": "novas/v01_veiculo_tnba.webp",
+  "url": "https://static.wikia.nocookie.net/dcanimated/images/e/e5/Third_Batmobile.png",
+  "bytes": 17908
+ },
+ {
+  "chave": "v02_traje_tdk",
+  "tipo": "traje",
+  "rotulo": "Traje modular O Cavaleiro das Trevas",
+  "status": "imagem",
+  "origem": "bale-batman.jpg",
+  "url": null,
+  "bytes": 34320
+ },
+ {
+  "chave": "v02_traje_begins",
+  "tipo": "traje",
+  "rotulo": "Traje Batman Begins",
+  "status": "imagem",
+  "origem": "novas/v02_traje_begins.webp",
+  "url": "https://static.wikia.nocookie.net/batman/images/6/6f/Batmanstudio12.jpg",
+  "bytes": 37532
+ },
+ {
+  "chave": "v02_rosto",
+  "tipo": "rosto",
+  "rotulo": "Bruce Wayne (Christian Bale)",
+  "status": "imagem",
+  "origem": "bale-batman.jpg",
+  "url": null,
+  "bytes": 26848
+ },
+ {
+  "chave": "v02_veiculo_tumbler",
+  "tipo": "veiculo",
+  "rotulo": "Tumbler",
+  "status": "imagem",
+  "origem": "novas/v02_veiculo_tumbler.webp",
+  "url": "https://static.wikia.nocookie.net/batman/images/3/3b/BaTumbler_HD.jpeg",
+  "bytes": 55510
+ },
+ {
+  "chave": "v02_veiculo_batpod",
+  "tipo": "veiculo",
+  "rotulo": "Batpod",
+  "status": "imagem",
+  "origem": "novas/v02_veiculo_batpod.webp",
+  "url": "https://static.wikia.nocookie.net/batman/images/3/36/Batpod2.jpg",
+  "bytes": 78542
+ },
+ {
+  "chave": "v03_traje_nano",
+  "tipo": "traje",
+  "rotulo": "Traje de nanopolímeros",
+  "status": "imagem",
+  "origem": "batman-beyond-139636-1-1200x676_uwgh.jpg",
+  "url": null,
+  "bytes": 21132
+ },
+ {
+  "chave": "v03_traje_exo",
+  "tipo": "traje",
+  "rotulo": "Exoesqueleto de Bruce Wayne",
+  "status": "imagem",
+  "origem": "novas/v03_traje_exo.webp",
+  "url": "https://static.wikia.nocookie.net/dcanimated/images/3/3e/Bbbatarmor.png",
+  "bytes": 24596
+ },
+ {
+  "chave": "v03_rosto",
+  "tipo": "rosto",
+  "rotulo": "Terry McGinnis",
+  "status": "imagem",
+  "origem": "novas/v03_rosto_terry.webp",
+  "url": "https://static.wikia.nocookie.net/dcanimated/images/8/87/Terry_McGinnis.png",
+  "bytes": 16234
+ },
+ {
+  "chave": "v03_civil",
+  "tipo": "civil",
+  "rotulo": "Terry McGinnis (civil)",
+  "status": "imagem",
+  "origem": "5d81da97b0d6054d46701daa87771131.jpg",
+  "url": null,
+  "bytes": 32278
+ },
+ {
+  "chave": "v03_mentor",
+  "tipo": "rosto",
+  "rotulo": "Bruce Wayne idoso (mentor)",
+  "status": "imagem",
+  "origem": "novas/v03_mentor_bruce.webp",
+  "url": "https://static.wikia.nocookie.net/dcanimated/images/0/0d/Old_Bruce.png",
+  "bytes": 14190
+ },
+ {
+  "chave": "v03_veiculo",
+  "tipo": "veiculo",
+  "rotulo": "Batmóvel voador 2039",
+  "status": "imagem",
+  "origem": "novas/v03_veiculo.webp",
+  "url": "https://static.wikia.nocookie.net/dcanimated/images/f/f7/5thBatmobile.png",
+  "bytes": 26068
+ },
+ {
+  "chave": "v04_traje_cinza",
+  "tipo": "traje",
+  "rotulo": "Traje cinza pesado",
+  "status": "imagem",
+  "origem": "novas/v04_traje_filme.webp",
+  "url": "https://static.wikia.nocookie.net/batman/images/2/23/Mutants_suit.png",
+  "bytes": 29624
+ },
+ {
+  "chave": "v04_traje_armadura",
+  "tipo": "traje",
+  "rotulo": "Armadura mecânica anti-Superman",
+  "status": "imagem",
+  "origem": "novas/v04_traje_armadura_hq.webp",
+  "url": "https://static.wikia.nocookie.net/marvel_dc/images/c/c5/Batman_Earth-31_010.jpg",
+  "bytes": 123760
+ },
+ {
+  "chave": "v04_rosto",
+  "tipo": "rosto",
+  "rotulo": "Bruce Wayne, 55 anos",
+  "status": "placeholder",
+  "origem": null,
+  "url": null,
+  "bytes": 16174
+ },
+ {
+  "chave": "v04_veiculo_tanque",
+  "tipo": "veiculo",
+  "rotulo": "Batmóvel tanque",
+  "status": "imagem",
+  "origem": "novas/v04_veiculo_tanque.webp",
+  "url": "https://static.wikia.nocookie.net/marvel_dc/images/6/63/Monster_Batmobile_1.jpg",
+  "bytes": 94126
+ },
+ {
+  "chave": "v05_traje_city",
+  "tipo": "traje",
+  "rotulo": "Batsuit Arkham City",
+  "status": "imagem",
+  "origem": "novas/v05_traje_city.webp",
+  "url": "https://static.wikia.nocookie.net/arkhamcity/images/b/b7/ACModelPodSuit.jpg",
+  "bytes": 24908
+ },
+ {
+  "chave": "v05_traje_knight",
+  "tipo": "traje",
+  "rotulo": "Batsuit v8.03 Arkham Knight",
+  "status": "imagem",
+  "origem": "novas/v05_traje_knight.webp",
+  "url": "https://static.wikia.nocookie.net/arkhamcity/images/6/6b/Knight.png",
+  "bytes": 25208
+ },
+ {
+  "chave": "v05_traje_xe",
+  "tipo": "traje",
+  "rotulo": "Traje XE criogênico",
+  "status": "imagem",
+  "origem": "novas/v05_traje_xe.webp",
+  "url": "https://static.wikia.nocookie.net/arkhamcity/images/1/14/Batmanarkhamoriginscoldcoldheartscreen862958.png",
+  "bytes": 48000
+ },
+ {
+  "chave": "v05_rosto",
+  "tipo": "rosto",
+  "rotulo": "Bruce Wayne (Arkhamverse)",
+  "status": "imagem",
+  "origem": "novas/v05_rosto_bruce.webp",
+  "url": "https://static.wikia.nocookie.net/arkhamcity/images/8/80/Batman_Arkham_Knight_All_Character_Bios_040.jpg",
+  "bytes": 18988
+ },
+ {
+  "chave": "v05_veiculo_perseguicao",
+  "tipo": "veiculo",
+  "rotulo": "Batmóvel modo perseguição",
+  "status": "imagem",
+  "origem": "novas/v05_veiculo_perseguicao.webp",
+  "url": "https://static.wikia.nocookie.net/arkhamcity/images/a/a5/DefaultCarSide.jpg",
+  "bytes": 29906
+ },
+ {
+  "chave": "v05_veiculo_tanque",
+  "tipo": "veiculo",
+  "rotulo": "Batmóvel modo tanque",
+  "status": "imagem",
+  "origem": "padronizadas/v05_veiculo.webp",
+  "url": null,
+  "bytes": 69332
+ },
+ {
+  "chave": "v06_traje_padrao",
+  "tipo": "traje",
+  "rotulo": "Traje Absoluto",
+  "status": "imagem",
+  "origem": "AbsoBatmanRender2.webp",
+  "url": null,
+  "bytes": 157846
+ },
+ {
+  "chave": "v06_traje_capa",
+  "tipo": "traje",
+  "rotulo": "Traje Absoluto com capa de combate",
+  "status": "imagem",
+  "origem": "novas/v06_traje_capa_textless.webp",
+  "url": "https://static.wikia.nocookie.net/marvel_dc/images/b/b7/Absolute_Batman_Vol_1_1_Textless.jpg",
+  "bytes": 84032
+ },
+ {
+  "chave": "v06_traje_machado",
+  "tipo": "traje",
+  "rotulo": "Traje Absoluto com machado",
+  "status": "imagem",
+  "origem": "padronizadas/v06_traje.webp",
+  "url": null,
+  "bytes": 137060
+ },
+ {
+  "chave": "v06_rosto",
+  "tipo": "rosto",
+  "rotulo": "Bruce Wayne (Absoluto)",
+  "status": "placeholder",
+  "origem": null,
+  "url": null,
+  "bytes": 16786
+ },
+ {
+  "chave": "v06_veiculo",
+  "tipo": "veiculo",
+  "rotulo": "Veículo tático Absoluto",
+  "status": "placeholder",
+  "origem": null,
+  "url": null,
+  "bytes": 28160
+ },
+ {
+  "chave": "v07_traje_padrao",
+  "tipo": "traje",
+  "rotulo": "Traje padrão Novos 52",
+  "status": "imagem",
+  "origem": "novas/v07_traje_dcamu.webp",
+  "url": "https://static.wikia.nocookie.net/dcanimatedmovieuniverse/images/d/d1/Batman.png",
+  "bytes": 16002
+ },
+ {
+  "chave": "v07_traje_hush",
+  "tipo": "traje",
+  "rotulo": "Traje Batman: Silêncio",
+  "status": "imagem",
+  "origem": "novas/v07_traje_novo.webp",
+  "url": "https://static.wikia.nocookie.net/dcanimatedmovieuniverse/images/8/85/Batman%27s_new_suit.png",
+  "bytes": 13956
+ },
+ {
+  "chave": "v07_traje_thrasher",
+  "tipo": "traje",
+  "rotulo": "Armadura Thrasher",
+  "status": "placeholder",
+  "origem": null,
+  "url": null,
+  "bytes": 21326
+ },
+ {
+  "chave": "v07_traje_buster",
+  "tipo": "traje",
+  "rotulo": "Justice Buster",
+  "status": "placeholder",
+  "origem": null,
+  "url": null,
+  "bytes": 20880
+ },
+ {
+  "chave": "v07_rosto",
+  "tipo": "rosto",
+  "rotulo": "Bruce Wayne (Novos 52)",
+  "status": "placeholder",
+  "origem": null,
+  "url": null,
+  "bytes": 16326
+ },
+ {
+  "chave": "v07_veiculo",
+  "tipo": "veiculo",
+  "rotulo": "Batmóvel DCAMU",
+  "status": "imagem",
+  "origem": "novas/v07_veiculo.webp",
+  "url": "https://static.wikia.nocookie.net/dcanimatedmovieuniverse/images/8/8d/Batmobile.png",
+  "bytes": 22480
+ },
+ {
+  "chave": "v08_traje_padrao",
+  "tipo": "traje",
+  "rotulo": "Traje The Batman 2004",
+  "status": "imagem",
+  "origem": "baixadas/batman_2004.png",
+  "url": null,
+  "bytes": 18796
+ },
+ {
+  "chave": "v08_traje_noturno",
+  "tipo": "traje",
+  "rotulo": "Traje The Batman (patrulha noturna)",
+  "status": "imagem",
+  "origem": "baixadas/bruce_2004_civil2.jpg",
+  "url": null,
+  "bytes": 19948
+ },
+ {
+  "chave": "v08_rosto",
+  "tipo": "rosto",
+  "rotulo": "Bruce Wayne (The Batman 2004)",
+  "status": "placeholder",
+  "origem": null,
+  "url": null,
+  "bytes": 17160
+ },
+ {
+  "chave": "v08_veiculo_esportivo",
+  "tipo": "veiculo",
+  "rotulo": "Batmóvel esportivo",
+  "status": "imagem",
+  "origem": "baixadas/batmobile_2004.jpg",
+  "url": null,
+  "bytes": 24732
+ },
+ {
+  "chave": "v08_veiculo_pesado",
+  "tipo": "veiculo",
+  "rotulo": "Veículo pesado",
+  "status": "placeholder",
+  "origem": null,
+  "url": null,
+  "bytes": 23160
+ },
+ {
+  "chave": "v09_traje",
+  "tipo": "traje",
+  "rotulo": "Traje Lorde Batman",
+  "status": "imagem",
+  "origem": "baixadas/justice_lord_batman.png",
+  "url": null,
+  "bytes": 31302
+ },
+ {
+  "chave": "v09_traje_duelo",
+  "tipo": "traje",
+  "rotulo": "Lorde Batman diante de Batman",
+  "status": "imagem",
+  "origem": "novas/v09_dois_batmen.webp",
+  "url": "https://static.wikia.nocookie.net/dcanimated/images/b/b6/Two_Batmen.png",
+  "bytes": 16154
+ },
+ {
+  "chave": "v09_rosto",
+  "tipo": "rosto",
+  "rotulo": "Bruce Wayne (Justice Lords)",
+  "status": "imagem",
+  "origem": "8ibrw8bnyijb1.jpg",
+  "url": null,
+  "bytes": 42270
+ },
+ {
+  "chave": "v09_veiculo",
+  "tipo": "veiculo",
+  "rotulo": "Jato dos Lordes da Justiça",
+  "status": "placeholder",
+  "origem": null,
+  "url": null,
+  "bytes": 28490
+ },
+ {
+  "chave": "v10_traje_flashpoint",
+  "tipo": "traje",
+  "rotulo": "Batman Flashpoint",
+  "status": "imagem",
+  "origem": "baixadas/thomas_wayne_rosto.jpg",
+  "url": null,
+  "bytes": 202200
+ },
+ {
+  "chave": "v10_traje_queda",
+  "tipo": "traje",
+  "rotulo": "Batman Flashpoint (capa)",
+  "status": "imagem",
+  "origem": "baixadas/thomas_wayne_traje.jpg",
+  "url": null,
+  "bytes": 135990
+ },
+ {
+  "chave": "v10_traje_duelo",
+  "tipo": "traje",
+  "rotulo": "Batman Flashpoint em combate",
+  "status": "imagem",
+  "origem": "novas/v10_traje_fp5.webp",
+  "url": "https://static.wikia.nocookie.net/marvel_dc/images/3/34/Flashpoint_Vol_2_5_Textless_Variant.jpg",
+  "bytes": 180136
+ },
+ {
+  "chave": "v10_rosto",
+  "tipo": "rosto",
+  "rotulo": "Thomas Wayne",
+  "status": "imagem",
+  "origem": "novas/v10_rosto_filme.webp",
+  "url": "https://static.wikia.nocookie.net/marvel_dc/images/d/dd/Thomas_Wayne_JLFP_Altered_001.jpg",
+  "bytes": 17788
+ },
+ {
+  "chave": "v10_civil",
+  "tipo": "civil",
+  "rotulo": "Thomas Wayne (civil)",
+  "status": "imagem",
+  "origem": "baixadas/thomas_wayne_civil.jpg",
+  "url": null,
+  "bytes": 106914
+ },
+ {
+  "chave": "v10_veiculo",
+  "tipo": "veiculo",
+  "rotulo": "Batmóvel Flashpoint",
+  "status": "placeholder",
+  "origem": null,
+  "url": null,
+  "bytes": 23550
+ },
+ {
+  "chave": "v11_traje_azrael",
+  "tipo": "traje",
+  "rotulo": "Azrael",
+  "status": "imagem",
+  "origem": "baixadas/azrael_traje_alt.jpg",
+  "url": null,
+  "bytes": 140362
+ },
+ {
+  "chave": "v11_traje_azbat",
+  "tipo": "traje",
+  "rotulo": "AzBat (A Queda do Morcego)",
+  "status": "imagem",
+  "origem": "novas/v11_traje_azbat2.webp",
+  "url": "https://static.wikia.nocookie.net/marvel_dc/images/9/91/Batman_Jean-Paul_Valley_0026.jpg",
+  "bytes": 289620
+ },
+ {
+  "chave": "v11_traje_azbat_garras",
+  "tipo": "traje",
+  "rotulo": "AzBat com garras",
+  "status": "imagem",
+  "origem": "novas/v11_traje_azbat.webp",
+  "url": "https://static.wikia.nocookie.net/marvel_dc/images/d/d5/Batman_Jean-Paul_Valley_0021.jpg",
+  "bytes": 191798
+ },
+ {
+  "chave": "v11_rosto",
+  "tipo": "rosto",
+  "rotulo": "Jean-Paul Valley",
+  "status": "imagem",
+  "origem": "baixadas/azrael_traje.jpg",
+  "url": null,
+  "bytes": 132760
+ },
+ {
+  "chave": "v11_veiculo",
+  "tipo": "veiculo",
+  "rotulo": "Batmóvel da era Knightfall",
+  "status": "placeholder",
+  "origem": null,
+  "url": null,
+  "bytes": 28342
+ },
+ {
+  "chave": "v12_traje",
+  "tipo": "traje",
+  "rotulo": "Batman Lego",
+  "status": "imagem",
+  "origem": "baixadas/lego_batman_rosto.png",
+  "url": null,
+  "bytes": 46410
+ },
+ {
+  "chave": "v12_traje_notebook",
+  "tipo": "traje",
+  "rotulo": "Batman Lego no Batcomputador",
+  "status": "imagem",
+  "origem": "baixadas/lego_batmobile_real.jpg",
+  "url": null,
+  "bytes": 37828
+ },
+ {
+  "chave": "v12_rosto",
+  "tipo": "rosto",
+  "rotulo": "Bruce Wayne Lego",
+  "status": "imagem",
+  "origem": "baixadas/lego_batmobile.png",
+  "url": null,
+  "bytes": 27468
+ },
+ {
+  "chave": "v12_veiculo_34",
+  "tipo": "veiculo",
+  "rotulo": "Batmóvel Lego (70905)",
+  "status": "imagem",
+  "origem": "novas/v12_veiculo_34.webp",
+  "url": "https://static.wikia.nocookie.net/lego/images/4/49/70905_alt3.jpg",
+  "bytes": 119928
+ },
+ {
+  "chave": "v12_veiculo_lateral",
+  "tipo": "veiculo",
+  "rotulo": "Batmóvel Lego, vista lateral",
+  "status": "imagem",
+  "origem": "novas/v12_veiculo_lateral.webp",
+  "url": "https://static.wikia.nocookie.net/lego/images/1/14/70905_alt2.jpg",
+  "bytes": 95112
+ }
+]
