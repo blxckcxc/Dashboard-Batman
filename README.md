@@ -13,12 +13,12 @@ Funciona 100% offline: basta abrir `index.html` (ou o arquivo único `DASHBOARD_
 | 3º | Batman do Futuro (Terry McGinnis) | Batmóvel voador |
 | 4º | O Cavaleiro das Trevas (Frank Miller, 1986) | Batmóvel tanque |
 | 5º | Série Arkham | Batmóvel em modo perseguição e modo tanque, com transformação animada |
-| 6 | Batman Absoluto (2024) | Veículo tático (conceitual) |
+| 6 | Batman Absoluto (2024) | Batmóvel Absoluto (Absolute Batman #2) |
 | 7 | Novos 52 e DCAMU | Batmóvel DCAMU |
-| 8 | The Batman (2004) | Esportivo · pesado (conceitual) |
-| 9 | Lorde Batman | Jato (conceitual) |
-| 10 | Thomas Wayne (Flashpoint) | Batmóvel Flashpoint (conceitual) |
-| 11 | Azrael (Knightfall) | Batmóvel da era Knightfall (conceitual) |
+| 8 | The Batman (2004) | Esportivo · Batmóvel Mk III, o tanque de 2027 |
+| 9 | Lorde Batman | Jato (conceitual, sem referência oficial) |
+| 10 | Thomas Wayne (Flashpoint) | Batmoto de Thomas Wayne (Batman #75) |
+| 11 | Azrael (Knightfall) | Batmóvel de 1994 (Robin #12, arco Prodigal) |
 | 12 | Batman LEGO | Batmóvel de peças LEGO |
 
 ## Recursos

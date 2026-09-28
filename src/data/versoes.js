@@ -214,9 +214,9 @@ export const VERSOES = [
       traje('machado', 'Traje com machado', 'v06_traje_machado', 'corpo', t({ luvas: 'Machado de batalha empunhado como ferramenta e arma.' })),
     ],
     veiculos: [
-      { id: 'absoluto', nome: 'Veículo tático Absoluto', img: 'v06_veiculo', modelo: 'absoluto', conceitual: true,
-        specs: [['Registro', 'Modelo conceitual Wayne Tech, sem referência oficial no arquivo'], ['Tipo', 'Blindado de engenheiro, montado com peças pesadas']],
-        textos: { cockpit: 'Cabine alta e protegida por grades soldadas.', blindagem: 'Chapas pesadas com espinhos, na mesma linguagem do traje.', rodas: 'Rodas off road de grande diâmetro.', turbina: 'Motor dianteiro de alto torque.' } },
+      { id: 'absoluto', nome: 'Batmóvel Absoluto', img: 'v06_veiculo', modelo: 'absoluto',
+        specs: [['Registro', 'Absolute Batman #2 (capa de janeiro de 2025)'], ['Arte', 'Nick Dragotta, cores de Frank Martin'], ['Tipo', 'Blindado gigante sobre rodas enormes, com asas de morcego']],
+        textos: { cockpit: 'Cabine alta e protegida por grades soldadas.', blindagem: 'Chapas pesadas com espinhos, na mesma linguagem do traje.', rodas: 'Rodas gigantes, mais altas que uma viatura.', turbina: 'Motor dianteiro de alto torque.' } },
     ],
   },
   {
@@ -272,9 +272,9 @@ export const VERSOES = [
       { id: 'esportivo', nome: 'Batmóvel esportivo', img: 'v08_veiculo_esportivo', modelo: 'tb04',
         specs: [['Tipo', 'Esportivo de alta performance'], ['Destaque', 'Iluminação azul e aletas traseiras']],
         textos: { cockpit: 'Cockpit baixo com painel azul.', turbina: 'Turbina traseira com brilho azul.', blindagem: 'Carroceria negra com frisos iluminados em azul.', rodas: 'Rodas traseiras largas.' } },
-      { id: 'pesado', nome: 'Veículo pesado', img: 'v08_veiculo_pesado', modelo: 'tb04pesado', conceitual: true,
-        specs: [['Registro', 'Modelo conceitual Wayne Tech, sem referência oficial no arquivo'], ['Tipo', 'Blindado pesado de apoio']],
-        textos: { cockpit: 'Cabine elevada e blindada.', blindagem: 'Placas pesadas com iluminação azul.', rodas: 'Seis rodas de tração.', armas: 'Canhão de rede e lançador de ganchos.' } },
+      { id: 'pesado', nome: 'Batmóvel Mk III (2027)', img: 'v08_veiculo_pesado', modelo: 'tb04pesado',
+        specs: [['Registro', 'Episódio "Artifacts" (4ª temporada)'], ['Época', 'Ano de 2027, na batalha final contra o Sr. Frio'], ['Tipo', 'Batmóvel blindado em estilo tanque']],
+        textos: { cockpit: 'Cabine elevada e blindada.', blindagem: 'Placas pesadas com iluminação vermelha.', rodas: 'Seis rodas de tração sob saias blindadas.', armas: 'Canhão montado sobre a cabine.' } },
     ],
   },
   {
@@ -326,9 +326,9 @@ export const VERSOES = [
       traje('duelo', 'Em combate', 'v10_traje_duelo', 'corpo', t()),
     ],
     veiculos: [
-      { id: 'flashpoint', nome: 'Batmóvel Flashpoint', img: 'v10_veiculo', modelo: 'flashpoint', conceitual: true,
-        specs: [['Registro', 'Modelo conceitual Wayne Tech, sem referência oficial no arquivo'], ['Tipo', 'Muscle car blindado com detalhes vermelhos']],
-        textos: { cockpit: 'Cockpit de dois lugares.', turbina: 'Escapamentos duplos com pós-combustão vermelha.', blindagem: 'Carroceria clássica reforçada.', rodas: 'Rodas largas de muscle car.' } },
+      { id: 'batmoto', nome: 'Batmoto de Thomas Wayne', img: 'v10_veiculo', modelo: 'batmoto',
+        specs: [['Registro', 'Batman #75 (capa de setembro de 2019), primeira parte de "City of Bane"'], ['Arte', 'Tony S. Daniel, cores de Tomeu Morey'], ['Tipo', 'Motocicleta de estrada']],
+        textos: { cockpit: 'Pilotagem sentada, com guidão largo e farol vermelho à frente.', turbina: 'Motor exposto sob o tanque, com escapamento cromado.', blindagem: 'Tanque e carenagem escuros, sem blindagem pesada.', rodas: 'Pneus de estrada com garfo telescópico cromado.' } },
     ],
   },
   {
@@ -353,9 +353,9 @@ export const VERSOES = [
       traje('garras', 'AzBat com garras', 'v11_traje_azbat_garras', 'corpo', t({ luvas: 'Garras de metal em leque, lançadas das manoplas.' })),
     ],
     veiculos: [
-      { id: 'knightfall', nome: 'Batmóvel da era Knightfall', img: 'v11_veiculo', modelo: 'knightfall', conceitual: true,
-        specs: [['Registro', 'Modelo conceitual Wayne Tech, sem referência oficial no arquivo'], ['Tipo', 'Batmóvel dos anos 90']],
-        textos: { cockpit: 'Cockpit monoposto.', turbina: 'Turbina central.', blindagem: 'Carroceria em cunha com aletas.', rodas: 'Rodas cobertas.' } },
+      { id: 'knightfall', nome: 'Batmóvel de 1994', img: 'v11_veiculo', modelo: 'knightfall',
+        specs: [['Registro', 'Robin #12 (capa de dezembro de 1994), arco "Prodigal"'], ['Contexto', 'Logo após o fim de A Queda do Morcego'], ['Arte', 'Phil Jimenez, arte-final de John Stokes'], ['Tipo', 'Capô longo, faróis redondos amarelos e canopy em bolha']],
+        textos: { cockpit: 'Cockpit sob canopy em bolha, com antena no topo.', turbina: 'Turbina central.', blindagem: 'Carroceria negra com contornos azulados.', rodas: 'Rodas sob a carroceria longa.' } },
     ],
   },
   {

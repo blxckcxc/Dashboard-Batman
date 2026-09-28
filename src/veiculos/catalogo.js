@@ -33,7 +33,7 @@ function colocarRoda(cfg, x, z, espelhar = false) {
   return r;
 }
 
-// Carro genérico de perfil extrudado (BTAS, TNBA, DCAMU, 2004, Flashpoint, Knightfall).
+// Carro genérico de perfil extrudado (BTAS, TNBA, DCAMU, 2004 e o Batmóvel de 1994).
 function carro(c) {
   const g = new THREE.Group();
   const pintura = MAT.pintura(c.cor, c.metal ?? 0.85, c.rug ?? 0.28);
@@ -56,6 +56,11 @@ function carro(c) {
   const cp = canopy({ comp: c.canopy.comp, larg: c.canopy.larg, alt: c.canopy.alt, cor: c.canopy.cor || 0x0f223d });
   cp.position.set(c.canopy.x, c.canopy.y, 0);
   g.add(cp);
+  if (c.antena) {
+    const an = peca(new THREE.CylinderGeometry(0.012, 0.012, c.antena, 6), MAT.cromo(), 'metal');
+    an.position.set(c.canopy.x + c.canopy.comp * 0.2, c.canopy.y + c.canopy.alt + c.antena / 2, 0);
+    g.add(an);
+  }
 
   const turbinas = [];
   for (const t of c.turbinas) {
@@ -69,7 +74,7 @@ function carro(c) {
   const xf = c.perfil.reduce((m, p) => Math.max(m, p[0]), -99);
   const xt = c.perfil.reduce((m, p) => Math.min(m, p[0]), 99);
   for (const z of [-c.largura * 0.32, c.largura * 0.32]) {
-    g.add(farol(0.22, 0.07, 0xe0f2fe, [xf + 0.06, c.alturaFarol || 0.45, z], [0, Math.PI / 2, 0]));
+    g.add(farol(0.22, 0.07, c.corFarol || 0xe0f2fe, [xf + 0.06, c.alturaFarol || 0.45, z], [0, Math.PI / 2, 0]));
     g.add(farol(0.24, 0.06, c.corLanterna || 0xdc2626, [xt - 0.06, c.alturaLanterna || 0.55, z], [0, -Math.PI / 2, 0]));
   }
   if (c.friso) {
@@ -155,27 +160,22 @@ const MODELOS = {
     friso: { comp: 3.6, x: 0.2, y: 0.58, cor: 0x3b82f6 },
     morcego: { escala: 0.7, cor: 0x60a5fa, y: 0.42 },
   }),
-  flashpoint: () => carro({
-    cor: 0x14161c, largura: 1.85, raioRoda: 0.45, largRoda: 0.42, metal: 0.7, rug: 0.4,
-    perfil: [[-2.6, 0.3], [-2.62, 0.78], [-1.9, 0.82], [-1.2, 1.18], [0.3, 1.18], [0.9, 0.84], [2.55, 0.8], [2.62, 0.4], [2.45, 0.24], [-2.4, 0.24]],
-    afunilar: afunilarPadrao(0.85, 0.92, 0.9),
-    rodas: [[1.7, 1.0], [1.7, -1.0], [-1.7, 1.02], [-1.7, -1.02]],
-    canopy: { x: -0.45, y: 1.12, comp: 1.4, larg: 1.2, alt: 0.12, cor: 0x220808 },
-    turbinas: [{ x: -2.7, y: 0.42, z: 0.45, raio: 0.14 }, { x: -2.7, y: 0.42, z: -0.45, raio: 0.14 }],
-    corChama: 0xef4444, corNucleo: 0xef4444, corLanterna: 0xef4444,
-    friso: { comp: 4.6, x: 0.0, y: 0.72, cor: 0xb91c1c },
-    alturaFarol: 0.62,
-  }),
+  // Batmóvel dos quadrinhos de 1994 (Robin #12): capô longo, faróis redondos amarelos e canopy em bolha
   knightfall: () => carro({
-    cor: 0x0c0f16, largura: 1.7, raioRoda: 0.42, largRoda: 0.34,
+    cor: 0x0a0d16, largura: 1.7, raioRoda: 0.42, largRoda: 0.34,
     perfil: [[-2.7, 0.28], [-2.75, 0.8], [-1.4, 0.85], [-0.8, 1.02], [0.3, 0.95], [2.7, 0.45], [2.72, 0.3], [2.5, 0.22], [-2.5, 0.22]],
     afunilar: afunilarPadrao(0.55, 0.9, 0.82),
     rodas: [[1.8, 0.9], [1.8, -0.9], [-1.8, 0.9], [-1.8, -0.9]],
-    aletas: [{ z: 0, pontos: [[-2.75, 0.76], [-1.7, 0.82], [-2.7, 1.7]] }],
-    canopy: { x: -0.2, y: 0.9, comp: 1.3, larg: 0.9, alt: 0.25 },
+    aletas: [
+      { z: 0.55, pontos: [[-2.75, 0.76], [-1.7, 0.82], [-2.7, 1.5]] },
+      { z: -0.55, pontos: [[-2.75, 0.76], [-1.7, 0.82], [-2.7, 1.5]] },
+    ],
+    canopy: { x: -0.2, y: 0.92, comp: 1.3, larg: 0.95, alt: 0.4, cor: 0x1e3a8a },
+    antena: 0.7,
     turbinas: [{ x: -2.85, y: 0.52, raio: 0.24 }],
-    corChama: 0xf59e0b,
-    friso: { comp: 3.0, x: 0.4, y: 0.55, cor: 0xf59e0b, inclinacao: -0.08 },
+    corChama: 0x60a5fa, corFarol: 0xfacc15,
+    friso: { comp: 3.0, x: 0.4, y: 0.55, cor: 0x38bdf8, inclinacao: -0.08 },
+    morcego: { escala: 0.75, cor: 0x38bdf8, y: 0.34 },
     alturaFarol: 0.36,
   }),
 
@@ -247,6 +247,44 @@ const MODELOS = {
       grupo: g, turbinas: [],
       ancoras: { cockpit: V(0, 0.75, 0), rodas: V(0.95, 0.55, 0.35), armas: V(1.3, 0.46, 0.12), blindagem: V(-0.3, 0.55, 0.2) },
       camCockpit: { pos: V(-0.1, 0.95, 0), olhar: V(6, 0.6, 0) },
+    };
+  },
+
+  // Batmoto de Thomas Wayne (Batman #75, 2019): motocicleta de estrada com farol vermelho
+  batmoto() {
+    const g = new THREE.Group();
+    const pintura = MAT.pintura(0x1a1d24, 0.75, 0.35);
+    const escuro = MAT.fosco(0x0f1115, 0.7, 0.5);
+    const barra = (a, b, r, mat) => {
+      const va = V(...a);
+      const vb = V(...b);
+      const m = peca(new THREE.CylinderGeometry(r, r, va.distanceTo(vb), 10), mat, 'metal');
+      m.position.copy(va).add(vb).multiplyScalar(0.5);
+      m.quaternion.setFromUnitVectors(V(0, 1, 0), vb.clone().sub(va).normalize());
+      return m;
+    };
+    const rodaCfg = { raio: 0.42, largura: 0.2, aro: 0.62, matAro: MAT.fosco(0x2a2d33, 0.85, 0.35), sulcos: 16 };
+    base(g, [colocarRoda(rodaCfg, 0.95, 0), colocarRoda({ ...rodaCfg, largura: 0.26 }, -0.9, 0)]);
+    // tanque, assento e rabeta
+    g.add(casco({ pontos: [[-0.2, 0.72], [0.1, 0.95], [0.55, 0.98], [0.75, 0.85], [0.6, 0.7]], largura: 0.36, mat: pintura, bevel: 0.04 }));
+    g.add(caixa(0.7, 0.08, 0.3, MAT.fosco(0x0b0b0d, 0.2, 0.8), [-0.45, 0.82, 0], [0, 0, 0.05]));
+    g.add(casco({ pontos: [[-1.15, 0.8], [-0.8, 0.9], [-0.2, 0.78], [-0.3, 0.66], [-0.9, 0.7]], largura: 0.26, mat: pintura, bevel: 0.03 }));
+    // motor, garfo, guidão, balança e escapamento
+    g.add(caixa(0.55, 0.35, 0.3, escuro, [0.1, 0.5, 0], [0, 0, 0], 'metal'));
+    for (const s of [1, -1]) {
+      g.add(barra([0.95, 0.42, s * 0.13], [0.7, 1.05, s * 0.13], 0.035, MAT.cromo()));
+      g.add(barra([-0.9, 0.42, s * 0.16], [-0.1, 0.5, s * 0.16], 0.03, escuro));
+    }
+    g.add(barra([0.68, 1.1, -0.38], [0.68, 1.1, 0.38], 0.025, MAT.cromo()));
+    g.add(barra([-0.2, 0.35, 0.22], [-1.0, 0.5, 0.22], 0.05, MAT.cromo()));
+    g.add(caixa(0.5, 0.03, 0.22, pintura, [0.95, 0.9, 0], [0, 0, -0.2]));
+    g.add(farol(0.16, 0.06, 0xef4444, [0.86, 0.98, 0], [0, Math.PI / 2, 0]));
+    g.add(farol(0.12, 0.04, 0xdc2626, [-1.17, 0.82, 0], [0, -Math.PI / 2, 0]));
+    g.add(internos({ comp: 1.4, larg: 0.3, motorX: 0.1, assentoX: -0.45, altura: 0.35 }));
+    return {
+      grupo: g, turbinas: [],
+      ancoras: { cockpit: V(-0.4, 1.0, 0), turbina: V(0.1, 0.5, 0.3), rodas: V(0.95, 0.42, 0.25), blindagem: V(0.3, 0.98, 0.22) },
+      camCockpit: { pos: V(-0.35, 1.45, 0), olhar: V(6, 0.9, 0) },
     };
   },
 
@@ -417,6 +455,7 @@ const MODELOS = {
     };
   },
 
+  // Batmóvel de Absolute Batman #2: blindado de engenheiro sobre rodas gigantes, com asas de morcego
   absoluto() {
     const g = new THREE.Group();
     const chapa = MAT.fosco(0x1c1f24, 0.75, 0.5);
@@ -436,11 +475,20 @@ const MODELOS = {
         g.add(e);
       }
     }
+    // rodas gigantes, como no Batmóvel de Absolute Batman #2
     const rodas = [];
-    for (const [x, z] of [[1.55, 1.05], [1.55, -1.05], [-1.55, 1.05], [-1.55, -1.05]]) rodas.push(colocarRoda({ raio: 0.62, largura: 0.5, aro: 0.5, matAro: MAT.fosco(0x2a2a2a, 0.8, 0.4), sulcos: 10 }, x, z, z < 0));
+    for (const [x, z] of [[1.55, 1.2], [1.55, -1.2], [-1.55, 1.2], [-1.55, -1.2]]) rodas.push(colocarRoda({ raio: 0.82, largura: 0.72, aro: 0.45, matAro: MAT.fosco(0x2a2a2a, 0.8, 0.4), sulcos: 12 }, x, z, z < 0));
     base(g, rodas);
+    // asas de morcego recortadas sobre a carroceria
     for (const s of [1, -1]) {
-      g.add(farol(0.25, 0.1, 0xf59e0b, [2.33, 1.15, s * 0.7], [0, Math.PI / 2, 0]));
+      const w = asa([[-2.2, 0], [0.6, 0], [0.1, 0.55], [-0.4, 0.4], [-0.8, 0.95], [-1.3, 0.7], [-1.8, 1.25], [-2.3, 0.6]], 0.05, chapa, 0xf59e0b);
+      w.position.set(0, 1.62, s * 0.9);
+      w.rotation.x = s * 0.35;
+      if (s < 0) w.scale.z = -1;
+      g.add(w);
+    }
+    for (const s of [1, -1]) {
+      g.add(farol(0.25, 0.1, 0xfacc15, [2.33, 1.15, s * 0.7], [0, Math.PI / 2, 0]));
       g.add(farol(0.2, 0.08, 0xdc2626, [-2.33, 1.05, s * 0.7], [0, -Math.PI / 2, 0]));
     }
     const tb = turbina({ raio: 0.16, comp: 0.4, corChama: 0xf97316 });
@@ -449,33 +497,40 @@ const MODELOS = {
     g.add(internos({ comp: 4, larg: 1.6, motorX: 1.4, assentoX: 0.3, altura: 0.8 }));
     return {
       grupo: g, turbinas: [tb],
-      ancoras: { cockpit: V(0.4, 2.2, 0), turbina: V(-2.7, 0.8, 0.6), blindagem: V(-1.0, 1.5, 1.1), rodas: V(1.55, 0.62, 1.4) },
+      ancoras: { cockpit: V(0.4, 2.2, 0), turbina: V(-2.7, 0.8, 0.6), blindagem: V(-1.0, 1.5, 1.1), rodas: V(1.55, 0.82, 1.7) },
       camCockpit: { pos: V(0.6, 1.9, 0), olhar: V(8, 1.7, 0) },
     };
   },
 
+  // Batmóvel Mk III de The Batman (2004), o blindado em estilo tanque do episódio "Artifacts" (2027)
   tb04pesado() {
     const g = new THREE.Group();
-    const chapa = MAT.pintura(0x0b0f18, 0.8, 0.35);
+    const chapa = MAT.pintura(0x0b0d12, 0.8, 0.35);
+    const esteira = MAT.fosco(0x15171c, 0.7, 0.6);
     g.add(casco({ pontos: [[-2.6, 0.55], [-2.7, 1.3], [-1.2, 1.55], [0.8, 1.55], [2.2, 1.2], [2.7, 0.8], [2.5, 0.5], [-2.4, 0.5]], largura: 1.9, mat: chapa, bevel: 0.05 }));
     const rodas = [];
     for (const x of [1.8, 0.1, -1.7]) {
       for (const z of [1.08, -1.08]) rodas.push(colocarRoda({ raio: 0.52, largura: 0.42, aro: 0.55, matAro: MAT.fosco(0x1e293b, 0.8, 0.4) }, x, z, z < 0));
     }
     base(g, rodas);
-    for (const s of [1, -1]) g.add(caixa(4.8, 0.03, 0.01, MAT.luz(0x3b82f6, 3), [0, 1.05, s * 1.0], [0, 0, 0], 'luz'));
+    // saias blindadas sobre as rodas, que dão o perfil de tanque
+    for (const s of [1, -1]) {
+      g.add(caixa(4.5, 0.42, 0.5, esteira, [0.05, 0.9, s * 1.1], [0, 0, 0]));
+      g.add(caixa(4.8, 0.03, 0.01, MAT.luz(0xdc2626, 3), [0, 1.05, s * 1.36], [0, 0, 0], 'luz'));
+      for (const x of [-1.6, -0.2, 1.2]) g.add(caixa(0.28, 0.05, 0.01, MAT.luz(0xef4444, 3), [x, 1.3, s * 0.96], [0, 0, 0.35], 'luz'));
+    }
     const canhao = peca(new THREE.CylinderGeometry(0.1, 0.12, 1.4, 16), MAT.fosco(0x1e293b, 0.9, 0.3), 'metal');
     canhao.rotation.z = Math.PI / 2;
     canhao.position.set(1.4, 1.65, 0);
     g.add(canhao);
-    const tb = turbina({ raio: 0.24, comp: 0.5, corChama: 0x3b82f6 });
+    const tb = turbina({ raio: 0.24, comp: 0.5, corChama: 0xef4444, corNucleo: 0xef4444 });
     tb.position.set(-2.75, 0.95, 0);
     g.add(tb);
-    g.add(farol(0.6, 0.06, 0x93c5fd, [2.68, 0.85, 0], [0, Math.PI / 2, 0]));
+    g.add(farol(0.6, 0.06, 0xef4444, [2.68, 0.85, 0], [0, Math.PI / 2, 0]));
     g.add(internos({ comp: 4, larg: 1.6, motorX: -1.5, assentoX: 0.6, altura: 0.8 }));
     return {
       grupo: g, turbinas: [tb],
-      ancoras: { cockpit: V(0.5, 1.7, 0), turbina: V(-3.0, 0.95, 0), blindagem: V(-0.8, 1.3, 1.05), rodas: V(0.1, 0.52, 1.4), armas: V(2.1, 1.65, 0) },
+      ancoras: { cockpit: V(0.5, 1.7, 0), turbina: V(-3.0, 0.95, 0), blindagem: V(-0.8, 1.05, 1.42), rodas: V(0.1, 0.4, 1.45), armas: V(2.1, 1.65, 0) },
       camCockpit: { pos: V(0.8, 1.72, 0), olhar: V(8, 1.5, 0) },
     };
   },
