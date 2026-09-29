@@ -182,6 +182,7 @@ export class Garagem {
     const ks = this.chavesPlanta();
     this.planta = ks;
     this.folhas.innerHTML = ks.map((k, i) => this.folhaHtml(k, i, ks.length)).join('');
+    this.folhas.classList.toggle('cinco', ks.length > 4);
     this.raiz.classList.add('planta');
     document.body.classList.add('em-planta');
     this.folhas.classList.add('visivel');
@@ -340,11 +341,22 @@ export class Garagem {
       const q = pt[k] || pt.blindagem;
       const hx = (q ? q.px : area.left + area.width / 2) - pr.left;
       const hy = (q ? q.py : area.top + area.height / 2) - pr.top;
-      const cx = r.left + r.width / 2 - pr.left;
-      const esq = cx < hx;
-      const fx = (esq ? r.right : r.left) - pr.left;
-      const fy = Math.min(Math.max(hy, r.top - pr.top + 14), r.bottom - pr.top - 14);
-      s += `<path d="M${fx.toFixed(1)},${fy.toFixed(1)}H${(fx + (esq ? 16 : -16)).toFixed(1)}L${hx.toFixed(1)},${hy.toFixed(1)}" class="guia ativa"/><circle cx="${hx.toFixed(1)}" cy="${hy.toFixed(1)}" r="3" class="guia-no ativa"/>`;
+      const topo = r.top - pr.top;
+      const base = r.bottom - pr.top;
+      let d;
+      if (base < hy || topo > hy) {
+        // prancha acima ou abaixo do ponto: a guia sai da borda voltada para o veículo
+        const acima = base < hy;
+        const fx = Math.min(Math.max(hx, r.left - pr.left + 14), r.right - pr.left - 14);
+        const fy = acima ? base : topo;
+        d = `M${fx.toFixed(1)},${fy.toFixed(1)}V${(fy + (acima ? 12 : -12)).toFixed(1)}L${hx.toFixed(1)},${hy.toFixed(1)}`;
+      } else {
+        const esq = r.left + r.width / 2 - pr.left < hx;
+        const fx = (esq ? r.right : r.left) - pr.left;
+        const fy = Math.min(Math.max(hy, topo + 14), base - 14);
+        d = `M${fx.toFixed(1)},${fy.toFixed(1)}H${(fx + (esq ? 16 : -16)).toFixed(1)}L${hx.toFixed(1)},${hy.toFixed(1)}`;
+      }
+      s += `<path d="${d}" class="guia ativa"/><circle cx="${hx.toFixed(1)}" cy="${hy.toFixed(1)}" r="3" class="guia-no ativa"/>`;
     }
     if (s !== this.guiasHtml) {
       this.guiasHtml = s;

@@ -254,7 +254,7 @@ body[data-modo="wire"] .status-palco { border-left-color: #22D3EE; color: #A5F3F
 .sem-ref.grande b { font-size: 14px; }
 body.sem-webgl .ped-slot, body.sem-webgl .capuz-slot, body.sem-webgl .veic-slot { background: center bottom / contain no-repeat; }
 
-.fonte-palco { position: absolute; top: 44px; left: 18px; margin: 0; max-width: 42%; font-family: 'Rajdhani', sans-serif; font-weight: 600; font-size: 10px; letter-spacing: .12em; color: #64748B; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; pointer-events: none; }
+.fonte-palco { position: absolute; top: 44px; left: 18px; margin: 0; max-width: 30%; font-family: 'Rajdhani', sans-serif; font-weight: 600; font-size: 10px; letter-spacing: .12em; color: #64748B; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; pointer-events: none; }
 
 /* vault: três pedestais em turnaround */
 .vault { position: absolute; left: calc(clamp(190px, 27%, 380px) + 18px); right: calc(clamp(190px, 27%, 380px) + 18px); top: 44px; bottom: 276px; }
@@ -313,7 +313,7 @@ body.sem-webgl .ped-slot, body.sem-webgl .capuz-slot, body.sem-webgl .veic-slot 
 /* garagem */
 .garagem { position: absolute; left: 14px; right: 14px; top: 92px; bottom: 150px; }
 .veic-area { position: absolute; left: 6%; right: 6%; top: 2%; bottom: 28%; transition: left .5s ease, right .5s ease, top .5s ease, bottom .5s ease; }
-.garagem.planta .veic-area { left: 31%; right: 31%; top: 30%; bottom: 36%; }
+.garagem.planta .veic-area { left: 14%; right: 14%; top: 33%; bottom: 38%; }
 .veic-slot { position: absolute; inset: 0; }
 .piso { position: absolute; left: -4%; right: -4%; top: 72%; bottom: -10px; z-index: 1; overflow: hidden; background: linear-gradient(to bottom, rgba(15,34,61,.45), rgba(7,10,14,0)); }
 .piso::before { content: ''; position: absolute; left: -20%; right: -20%; top: 0; height: 180%; transform-origin: 50% 0; transform: perspective(420px) rotateX(64deg);
@@ -340,13 +340,16 @@ body[data-modo="xray"] .xray-esquema { display: block; }
 .chama span { position: absolute; left: 0; top: -10px; width: 110px; height: 20px; transform-origin: 0 50%; border-radius: 50%;
   background: radial-gradient(ellipse at 0% 50%, #fff 0 7%, #bae6fd 13%, rgba(56,189,248,.85) 24%, rgba(245,158,11,.8) 46%, rgba(239,68,68,.35) 68%, transparent 76%); animation: chama .08s steps(2) infinite alternate; }
 .cad-folhas { position: absolute; left: 10px; right: 10px; top: 84px; bottom: 116px; z-index: 4; pointer-events: none; }
-.cad-folha { position: absolute; width: 30%; animation: entra .35s ease both; }
-.cad-folha.p0 { left: 0; top: 0; }
-.cad-folha.p1 { right: 0; top: 0; }
-.cad-folha.p2 { left: 0; bottom: 0; }
-.cad-folha.p3 { right: 0; bottom: 0; }
-.cad-folha.p4 { left: 35%; top: 0; }
-.cad-folha.unica { width: 36%; top: 0; }
+/* planta CAD em duas fileiras: pranchas em cima e embaixo, veículo na faixa do meio.
+   A largura vem da altura disponível no palco (100vh menos barra, abas e dock) e do formato 16:10 da prancha. */
+.cad-folha { position: absolute; animation: entra .35s ease both; }
+.cad-folha.p0 { left: 0; top: 0; width: max(170px, min(49%, calc(51.2vh - 169px))); }
+.cad-folha.p1 { right: 0; top: 0; width: max(170px, min(49%, calc(51.2vh - 169px))); }
+.cad-folha.p2 { left: 0; bottom: 0; width: max(170px, min(49%, calc(57.6vh - 185px))); }
+.cad-folha.p3 { right: 0; bottom: 0; width: max(170px, min(49%, calc(57.6vh - 185px))); }
+.cad-folha.p4 { top: 0; width: max(150px, min(32.5%, calc(41.6vh - 144px))); left: calc(50% - max(75px, min(16.25%, calc(20.8vh - 72px)))); }
+.cinco .p0, .cinco .p1 { width: max(150px, min(32.5%, calc(41.6vh - 144px))); }
+.cad-folha.unica { width: max(170px, min(49%, calc(51.2vh - 169px))); top: 0; }
 .cad-folha.unica.esq { left: 0; }
 .cad-folha.unica.dir { right: 0; }
 body.em-cockpit .garagem .hs-camada, body.em-cockpit .vistas { opacity: 0; pointer-events: none; }
@@ -427,7 +430,7 @@ body.em-planta .radar { display: none; }
   .capuz-v { width: 60px; height: 60px; }
   .garagem { left: 6px; right: 6px; top: 86px; }
   .cad-folhas { top: 80px; left: 6px; right: 6px; }
-  .cad-folha, .cad-folha.unica { width: 46%; }
+  .cad-folhas .cad-folha { width: 46%; }
   .cad-folha.p4 { display: none; }
   .garagem.planta .veic-area { left: 20%; right: 20%; top: 34%; bottom: 40%; }
   .vistas { top: -36px; max-width: 100%; overflow-x: auto; }
