@@ -1,6 +1,6 @@
 # O Panteão das Sombras
 
-**Wayne Tech Interactive Multiverse Supercomputer HUD & 3D Vault**: um showroom 3D interativo com 12 versões do Batman, ranqueadas, cada uma com vault de trajes, revelação de identidade, garagem de Batmóveis e ficha canônica.
+**Wayne Tech Interactive Multiverse Supercomputer HUD**: um showroom holográfico interativo com 12 versões do Batman, ranqueadas, cada uma com vault de trajes em turnaround, revelação de identidade, garagem de Batmóveis com planta CAD e ficha canônica.
 
 Funciona 100% offline: basta abrir `index.html` (ou o arquivo único `DASHBOARD_BATMAN_MULTIVERSO.html`) com dois cliques.
 
@@ -23,44 +23,62 @@ Funciona 100% offline: basta abrir `index.html` (ou o arquivo único `DASHBOARD_
 
 ## Recursos
 
-- **Cena 3D em Three.js:**
-  - estúdio azul-noite próprio para os reflexos PBR, com holofotes azul e âmbar em movimento;
-  - névoa, piso reflexivo com grade holográfica, poeira em partículas e feixe de escaneamento;
-  - câmera com zoom, pan e amortecimento.
-- **Três modos de visualização:** Realista (PBR), Wireframe holográfico e Raio-X/Blueprint, este com as camadas internas destacadas em âmbar.
+- **Interface holográfica 2.5D em WebGL puro:**
+  - a arte oficial e as fotos de figuras licenciadas são projetadas por um único canvas WebGL, com um shader próprio;
+  - o shader faz contorno de luz, linhas de varredura, cintilação, feixe de escaneamento, glitch com separação RGB nas transições e dissolução por ruído com borda âmbar;
+  - não há malhas procedurais nem biblioteca 3D: o custo de GPU medido no painel foi de 0,3 ms por quadro, com folga para 60 FPS.
+- **Três modos de visualização:**
+  - **Realista:** arte completa com luz dramática;
+  - **Wireframe:** linhas vetoriais neon tiradas das bordas reais da imagem (Sobel), ciano no vault e verde na garagem;
+  - **Raio-X:** luminância invertida em paleta de varredura óssea; na garagem, soma um esquema interno de cubos, eixos, trem de força, motor e tanque, identificado como interpretação.
 - **Vault de trajes em turnaround:**
-  - manequim 3D procedural de cada variante em três pedestais: costas, frente e perfil;
-  - silhueta própria por versão: Miller maciço de orelhas curtas, Beyond esguio sem boca, Arkham com armadura tática, Absoluto com orelhas em lâmina e peito muralha, Justice Buster, AzBat, minifigura LEGO e assim por diante;
-  - a figura central gira arrastando com o mouse ou o dedo;
-  - vistas do capuz em frente, 3/4 e perfil, e painéis de estudo com capuz, placas torácicas, cinto modular e malha balística;
-  - hotspots de materiais: clicar num ponto ou na peça abre o estudo explodido dela em holograma;
-  - botão **Remover máscara**: o capuz se dissolve com borda âmbar e o cartão holográfico mostra o rosto, o traje civil e o mentor do acervo.
+  - três pedestais (costas, frente e perfil) com os ângulos reais do acervo;
+  - arrastar a figura central, usar as setas ou os botões percorre os ângulos com transição holográfica;
+  - o turnaround completo de 8 ângulos existe para o BTAS 1992 (figura Mondo), e há de 2 a 5 ângulos para Begins, Beyond, Miller, Arkham Knight, Absoluto, Novos 52, Flashpoint e AzBat;
+  - ângulo sem referência mostra o aviso **SEM REFERÊNCIA OFICIAL** em vez de uma imagem inventada;
+  - o capuz aparece em três vistas (frente, 3/4 e perfil), com closes oficiais quando existem e, nos outros casos, o recorte da cabeça de cada ângulo;
+  - quatro pranchas técnicas: Capuz e Lentes, Placas Torácicas, Cinto Modular e Malha Balística;
+  - os pontos de inspeção ficam sobre a figura, ligados às pranchas por linhas-guia, e clicar numa prancha a amplia;
+  - **Remover máscara** dissolve o traje no rosto canônico, depois no traje civil e no mentor, quando o acervo tem essas imagens.
 - **Garagem:**
-  - 15 veículos esculpidos em código (16 fichas, contando os dois modos do Arkham) por loft de seções e placas facetadas, com pintura acetinada, rodas com disco de freio e turbinas com pós-combustão animada;
-  - **plantas CAD** explodidas: cada ponto de inspeção abre a submontagem (turbina, suspensão e freio, blindagem em camadas, cockpit e armas) e o botão **Planta CAD** mostra todas ao redor do veículo;
-  - visão de **cockpit** com instrumentos, **ignição** e inspeção de **blindagem**.
+  - arte oficial do veículo em holograma, com reflexo no piso;
+  - abas Lateral, Topo, 3/4 e Traseira, mais as vistas extras do acervo; vista sem referência fica riscada e mostra o aviso;
+  - pontos de inspeção posicionados sobre cada imagem;
+  - chama de pós-combustão no bocal da turbina;
+  - **cockpit** com zoom na cabine e instrumentos;
+  - transformação Arkham por glitch entre os modos perseguição e tanque;
+  - **Planta CAD** (tecla P), com as pranchas ao redor do veículo:
+    - cockpit;
+    - turbina em corte;
+    - suspensão e freios de carbono;
+    - blindagem reativa e chassi tubular;
+    - armas.
+  - As pranchas têm variantes para carro, tanque, moto, veículo voador e LEGO.
+- **Pranchas técnicas em SVG:**
+  - padrão de prancha de engenharia: moldura, grade, carimbo "Wayne Enterprises · Ciências Aplicadas", código DWG, "sem escala", cortes, cotas e chamadas;
+  - números só aparecem quando há fonte verificada. Hoje isso vale apenas para o Tumbler: motor V8 GM de 5,7 L, pneus traseiros Interco Super Swamper de 44 pol e massa de 2,5 toneladas curtas, conferidos em duas wikis;
+  - o resto é qualitativo.
 - **HUD Wayne Tech:**
-  - arquivo do multiverso com avatares biométricos padronizados (busto 1:1, fundo chumbo e luz de contorno) e selo Top 5;
-  - ficha com abas (Ficha, Trajes, Veículo, Feitos), com as imagens canônicas de referência;
-  - radar da Batcaverna, monitor de ameaças e telemetria.
+  - arquivo do multiverso com avatares biométricos 1:1 e selo Top 5;
+  - ficha em abas (Ficha, Trajes, Veículo, Feitos);
+  - radar, monitor de ameaças e telemetria.
 - **Áudio sintetizado (Web Audio API):** boot, clique, transição, som pneumático da máscara, zumbido do raio-X, ignição e transformação.
-- **Responsivo:** no celular, a cena fica em cima e os painéis empilham embaixo.
-
-Os modelos 3D de trajes e veículos são interpretações feitas a partir das referências oficiais do acervo, não réplicas; a interface identifica isso.
+- **Responsivo:** no celular, o palco fica em cima e os painéis empilham embaixo.
 
 ## Controles
 
 | Tecla ou gesto | Ação |
 |-|-|
-| Setas | Versão anterior ou seguinte |
+| Setas para cima e para baixo | Versão anterior ou seguinte |
+| Setas laterais (vault) | Girar a figura entre os ângulos |
 | 1, 2, 3 | Realista, Wireframe, Raio-X |
 | T, V | Vault de trajes, Garagem |
-| Arrastar (vault) | Girar a figura central |
+| Arrastar (vault) | Percorrer os ângulos da figura central |
 | R | Remover máscara (no vault) |
 | I | Ignição (na garagem) |
 | C | Entrar ou sair do cockpit |
 | P | Planta CAD completa (na garagem) |
-| Esc | Fechar detalhe, estudo e cockpit |
+| Esc | Fechar prancha ampliada, detalhe, planta e cockpit |
 
 **Links diretos:** o endereço guarda o estado no formato `#versão/estação/modo/variante/ação`. Por exemplo, `index.html#v05/veiculo/xray/1/ignicao` abre a Série Arkham na garagem, em raio-X, no modo tanque e com a ignição ligada; `index.html#v01/veiculo/real/0/planta` abre a planta CAD do BTAS.
 
@@ -70,59 +88,56 @@ Os modelos 3D de trajes e veículos são interpretações feitas a partir das re
 index.html                         página principal (carrega dist/app.css e dist/app.js)
 DASHBOARD_BATMAN_MULTIVERSO.html   versão em arquivo único, gerada pelo build
 src/main.js                        orquestração do app
+src/holo/motor.js                  motor holográfico WebGL (canvas único, shader e texturas)
+src/holo/vault.js                  turnaround em três pedestais, capuz e revelação
+src/holo/garagem.js                vistas, ignição, cockpit, raio-x e planta CAD
+src/ui/plantas.js                  pranchas técnicas em SVG
 src/data/versoes.js                dados canônicos das 12 versões
-src/core/                          cena, modos de visualização e hotspots
-src/veiculos/loft.js               loft de seções: superfícies suaves por curvas de perfil
-src/veiculos/modelos/              veículos esculpidos (animados e de filmes, jogos e HQs)
-src/veiculos/cad.js                plantas CAD explodidas das submontagens
-src/trajes/manequim.js             manequim 3D procedural
-src/trajes/presets.js              silhueta, capuz e cores das 31 variantes de traje
-src/trajes/vault.js                turnaround, dissolução do capuz e estudo explodido
-src/trajes/capuz.js                vistas do capuz em três ângulos
-src/trajes/pod.js                  cartão holográfico de identidade
+src/data/perfis.js                 traços dos trajes, tipos de veículo, dados verificados e pontos de inspeção
 src/audio/sfx.js                   efeitos sonoros sintetizados
-src/ui/                            HUD, radar e painéis de estudo em SVG
-src/styles/main.css                estilos do HUD
-assets/                            imagens padronizadas, avatares e manifestos
-assets/modelos/                    (opcional) GLB que substituem veículos procedurais
+src/ui/hud.js, src/ui/radar.js     HUD e radar
+src/styles/main.css                estilos
+assets/                            imagens padronizadas, avatares, hologramas e manifestos
 tools/processar_assets.py          padronização do acervo (Python com Pillow)
-tools/processar_avatares.py        avatares biométricos (Python com Pillow e rembg)
+tools/processar_avatares.py        avatares biométricos (Pillow e rembg)
+tools/processar_holos.py           recortes holográficos dos turnarounds e vistas (Pillow, SciPy e rembg)
 tools/build.mjs                    build offline (esbuild)
 LACUNAS.md                         o que ainda falta no acervo e como completar
 ```
 
 ## Como gerar de novo
 
-Requer Node 18 ou superior. Para reprocessar imagens, Python com Pillow; para os avatares, também o rembg (`pip install "rembg[cpu]"`, que baixa o modelo de recorte na primeira execução).
+Requer Node 18 ou superior. Para reprocessar imagens, Python com Pillow; para avatares e hologramas, também o rembg (`pip install "rembg[cpu]"`, que baixa o modelo de recorte na primeira execução) e o SciPy. As fontes dos turnarounds ficam em `novas/turnaround/`, que não vai para o repositório; as origens estão em `novas/_origem_downloads.json`.
 
 ```
 npm install
 npm run assets
 npm run avatares
+npm run holos
 npm run build
 ```
 
 O build:
-1. embute as imagens, os avatares e as fontes (Orbitron, Rajdhani e Inter, licença OFL);
-2. embute os GLB opcionais de `assets/modelos/`;
+1. embute as imagens, os avatares, os hologramas e as fontes (Orbitron, Rajdhani e Inter, licença OFL);
+2. gera `src/_gerado/holos.js` com ângulos, caixas de cabeça e vistas;
 3. confere que nenhum arquivo próprio contém hífen duplo;
 4. empacota tudo num script clássico, o que permite abrir via `file://` sem servidor.
-
-**Exceção à regra do hífen duplo:** o código de terceiros empacotado em `dist/` (three.js) não é alterado e fica fora dessa conferência.
-
-### Modelos GLB opcionais
-
-Um arquivo `assets/modelos/<modelo>.glb` substitui o veículo procedural de mesmo nome (por exemplo `btas.glb`, `tumbler.glb` ou `arkham.glb`, conforme os nomes em `src/veiculos/modelos/`). O modelo é centralizado e escalado para o comprimento do procedural, e mantém os pontos de inspeção, a turbina e a câmera de cockpit. Use apenas modelos cuja licença permita redistribuição, porque o repositório é público.
 
 ## Fatos e fontes
 
 - **Fatos canônicos** (estreias, criadores, vozes): conferidos na Wikipedia (en/pt) em 28/09/2026. O que não pôde ser confirmado ficou de fora.
 - **Engenharia de trajes e veículos:** os textos são descrições do universo ficcional, identificadas como dossiê Wayne Tech.
 - **Imagens:** vêm do acervo local e das wikis Fandom. As URLs estão em `novas/_origem_downloads.json` e `assets/manifest.json`.
+- **Turnarounds e vistas:** são fotos de produto de figuras e estátuas licenciadas, de lojas oficiais:
+  - Mondo: BTAS 1992 e Batman Beyond;
+  - Hot Toys: Batman Begins e o Tumbler;
+  - McFarlane Toys: TDK, Miller, Arkham Knight, Novos 52 e AzBat;
+  - Iron Studios: Absolute Batman.
+  Também entram a ficha de design de Andy Kubert para o Flashpoint e capturas de Batman: Arkham Knight (Arkham Wiki). A fonte de cada variante aparece no palco. Os recortes sem fundo foram feitos com rembg.
 
 ## Créditos e aviso legal
 
 - **Projeto:** de fã, sem fins comerciais. Batman, personagens, veículos e imagens relacionadas são propriedade da DC Comics e da Warner Bros. Discovery.
 - **Repositório:** é público e contém imagens protegidas por direitos autorais, usadas apenas como referência. Se houver pedido de remoção dos titulares, elas devem ser retiradas.
-- **Bibliotecas e fontes:** three.js (MIT), esbuild (MIT), fontes Orbitron, Rajdhani e Inter (SIL Open Font License); os avatares usam o rembg (MIT) com o modelo isnet-general-use, só na etapa de geração.
-- **Design de interface:** Wayne Tech é uma marca do universo ficcional; os painéis e modelos deste projeto são criação própria e não reproduzem arte de nenhum artista.
+- **Bibliotecas e fontes:** esbuild (MIT), fontes Orbitron, Rajdhani e Inter (SIL Open Font License); os avatares e os hologramas usam o rembg (MIT) com o modelo isnet-general-use, só na etapa de geração.
+- **Design de interface:** Wayne Tech é uma marca do universo ficcional; o HUD, o shader e as pranchas técnicas deste projeto são criação própria. As imagens projetadas pertencem aos titulares indicados acima.
