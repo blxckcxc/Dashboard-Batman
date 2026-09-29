@@ -300,8 +300,8 @@ export const VERSOES = [
     ],
     veiculos: [
       { id: 'jato', nome: 'Jato dos Lordes', img: 'v09_veiculo', modelo: 'jato', conceitual: true,
-        specs: [['Registro', 'Modelo conceitual Wayne Tech, sem referência oficial no arquivo'], ['Tipo', 'Jato de interceptação']],
-        textos: { cockpit: 'Cockpit monoposto sob canopy.', turbina: 'Dois motores a jato com pós-combustão.', blindagem: 'Asas em forma de morcego.', armas: 'Mísseis sob as asas.' } },
+        specs: [['Registro', 'Sem referência visual oficial no acervo'], ['Situação', 'Nenhum veículo dos Lordes da Justiça aparece em "A Better World"']],
+        textos: {} },
     ],
   },
   {

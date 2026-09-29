@@ -70,7 +70,7 @@
   "bytes": 39292
  },
  {
-  "chave": "holo_v01_btas_traseira",
+  "chave": "holo_v01_btas_lateral",
   "tipo": "holo",
   "bytes": 44854
  },
@@ -243,11 +243,6 @@
   "chave": "holo_v05_xe_frente",
   "tipo": "holo",
   "bytes": 62780
- },
- {
-  "chave": "holo_v05_perseguicao_34",
-  "tipo": "holo",
-  "bytes": 66310
  },
  {
   "chave": "holo_v05_perseguicao_lateral",

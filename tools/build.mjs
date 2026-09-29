@@ -1,4 +1,4 @@
-// Build offline: gera os módulos de assets e fontes, confere a regra do hífen duplo nos fontes próprios,
+// Build offline: gera os módulos de assets, hologramas e fontes, confere a regra do hífen duplo nos fontes próprios,
 // empacota com esbuild (IIFE clássico, abre via file://) e escreve o HTML autocontido.
 import { build, transform } from 'esbuild';
 import { readFileSync, writeFileSync, mkdirSync, readdirSync, statSync, existsSync } from 'node:fs';
@@ -11,22 +11,18 @@ const HIFEN_DUPLO = [String.fromCharCode(45, 45), String.fromCharCode(45, 32, 45
 
 // 1. assets como data URL
 const manifest = JSON.parse(readFileSync(r('assets', 'manifest.json'), 'utf8'));
-if (existsSync(r('assets', 'avatares.json'))) manifest.push(...JSON.parse(readFileSync(r('assets', 'avatares.json'), 'utf8')));
+for (const extra of ['avatares.json', 'holos_manifest.json']) {
+  if (existsSync(r('assets', extra))) manifest.push(...JSON.parse(readFileSync(r('assets', extra), 'utf8')));
+}
 const assets = {};
 for (const m of manifest) assets[m.chave] = `data:image/webp;base64,${readFileSync(r('assets', `${m.chave}.webp`)).toString('base64')}`;
 mkdirSync(r('src', '_gerado'), { recursive: true });
 writeFileSync(r('src', '_gerado', 'assets.js'), `export const ASSETS = ${JSON.stringify(assets)};\n`);
 
-// 1b. modelos GLB opcionais: assets/modelos/<modelo>.glb substitui o veículo procedural de mesmo nome
-const glbs = {};
-if (existsSync(r('assets', 'modelos'))) {
-  for (const n of readdirSync(r('assets', 'modelos'))) {
-    if (extname(n).toLowerCase() !== '.glb') continue;
-    glbs[n.slice(0, -4)] = readFileSync(r('assets', 'modelos', n)).toString('base64');
-  }
-}
-writeFileSync(r('src', '_gerado', 'modelos.js'), `export const MODELOS_GLB = ${JSON.stringify(glbs)};\n`);
-if (Object.keys(glbs).length) console.log(`modelos GLB: ${Object.keys(glbs).join(', ')}`);
+// 1b. dados do acervo holográfico 2.5D (ângulos, caixas de cabeça, pontos de inspeção e vistas)
+const holos = existsSync(r('assets', 'holos.json')) ? JSON.parse(readFileSync(r('assets', 'holos.json'), 'utf8')) : { trajes: {}, veiculos: {} };
+writeFileSync(r('src', '_gerado', 'holos.js'), `export const HOLOS = ${JSON.stringify(holos)};
+`);
 
 // 2. fontes locais (subconjunto latino, woff2) embutidas no CSS
 const FONTES = [

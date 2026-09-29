@@ -111,7 +111,7 @@ export class Hud {
           <button type="button" class="card-var${i === s.veiculoIdx ? ' ativo' : ''}" data-veiculo="${i}">
             <img src="${ASSETS[x.img]}" alt=""><span>${esc(x.nome)}</span>
           </button>`).join('')}</div>
-        ${vc.conceitual ? '<p class="alerta-conceito">MODELO CONCEITUAL · sem referência visual oficial no arquivo</p>' : ''}
+        ${vc.conceitual ? '<p class="alerta-conceito">SEM REFERÊNCIA OFICIAL · nenhuma imagem deste veículo no acervo</p>' : ''}
         <dl class="ficha-dl">${vc.specs.map(([k, val]) => `<dt>${esc(k)}</dt><dd>${esc(val)}</dd>`).join('')}</dl>
         <h4 class="sub">Pontos de inspeção</h4>
         <ul class="lista-hs">${Object.entries(vc.textos).map(([k, txt]) => `<li><strong>${esc(ROTULO_VEIC[k] || k)}</strong>${esc(txt)}</li>`).join('')}</ul>`;
@@ -133,7 +133,7 @@ export class Hud {
       if (a === 'estacao') app.trocarEstacao(b.dataset.valor);
       else if (a === 'modo') app.definirModo(b.dataset.valor);
       else if (a === 'revelar') app.revelar();
-      else if (a === 'cockpit') app.entrarCockpit();
+      else if (a === 'cockpit') (app.emCockpit ? app.sairCockpit() : app.entrarCockpit());
       else if (a === 'turbina') app.ignicao();
       else if (a === 'blindagem') app.blindagem();
       else if (a === 'transformar') app.transformar();
@@ -156,11 +156,11 @@ export class Hud {
     $('#dock-variantes').innerHTML = lista.map((x, i) => `<button type="button" data-acao="variante" data-valor="${i}" class="chip${i === idx ? ' ativo' : ''}">${esc(x.nome)}</button>`).join('');
     const acoes = trajes
       ? `<button type="button" data-acao="revelar" class="acao ambar">${esc(this.app.rotuloRevelar())}</button>`
-      : `<button type="button" data-acao="cockpit" class="acao">COCKPIT</button>
+      : `<button type="button" data-acao="cockpit" class="acao${this.app.emCockpit ? ' ativo' : ''}">${this.app.emCockpit ? 'SAIR DO COCKPIT' : 'COCKPIT'}</button>
          <button type="button" data-acao="turbina" class="acao ambar">${this.app.turbinaAcesa ? 'DESLIGAR MOTOR' : 'IGNIÇÃO'}</button>
          <button type="button" data-acao="blindagem" class="acao">BLINDAGEM</button>
-         <button type="button" data-acao="planta" class="acao ciano${this.app.cad && this.app.cad.ativas.length > 1 ? ' ativo' : ''}">PLANTA CAD</button>
-         ${this.app.veiculo && this.app.veiculo.transformar ? `<button type="button" data-acao="transformar" class="acao ciano">${s.modoArkham === 'tanque' ? 'MODO PERSEGUIÇÃO' : 'MODO TANQUE'}</button>` : ''}`;
+         <button type="button" data-acao="planta" class="acao ciano${this.app.garagem && this.app.garagem.plantaAberta ? ' ativo' : ''}">PLANTA CAD</button>
+         ${this.app.veiculo && this.app.veiculo.modo ? `<button type="button" data-acao="transformar" class="acao ciano">${s.modoArkham === 'tanque' ? 'MODO PERSEGUIÇÃO' : 'MODO TANQUE'}</button>` : ''}`;
     $('#dock-acoes').innerHTML = acoes;
   }
 
@@ -177,8 +177,12 @@ export class Hud {
 
   fecharDetalhe() {
     $('#detalhe').hidden = true;
-    if (this.app.cad && this.app.cad.ativas.length === 1) this.app.cad.limpar();
-    if (this.app.vault) this.app.vault.limparEstudo();
+    for (const fo of document.querySelectorAll('.estudo-painel.foco')) fo.classList.remove('foco');
+    if (this.app.vault) this.app.vault.limparHotspot();
+    if (this.app.garagem) {
+      this.app.garagem.limparHotspot();
+      if (!this.app.garagem.plantaAberta) this.app.garagem.fecharPlanta();
+    }
   }
 
   toast(msg) {

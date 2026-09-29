@@ -5,7 +5,7 @@ dos closes de capuz e das vistas de cada veículo, com caixas de cabeça e hotsp
 Fontes: turnarounds de figuras e estátuas licenciadas e artes oficiais em novas/turnaround/ (origem em
 novas/_origem_downloads.json); o que não tiver turnaround usa a imagem canônica do acervo (processar_assets.py).
 Saída: assets/holo_*.webp (RGBA) e assets/holos.json, lido pelo build.
-Uso: python tools/processar_holos.py [--refazer]   (requer: pip install "rembg[cpu]")
+Uso: python tools/processar_holos.py [refazer]   (requer: pip install "rembg[cpu]")
 """
 import importlib.util
 import json
@@ -64,13 +64,13 @@ TURN = {
 # Vistas extras de veículos: (vista, origem, recorte). A vista da imagem do acervo entra como 3/4 quando não houver outra.
 VEIC = {
     "v05:perseguicao": {"fonte": "Capturas de Batman: Arkham Knight (Arkham Wiki)", "vistas": [
-        ("lateral", T + "v05_veic_lateral.webp", None), ("frontal", T + "v05_veic_frente.webp", None)]},
+        ("frontal", T + "v05_veic_frente.webp", None)]},
     "v05:batalha": {"fonte": "Capturas de Batman: Arkham Knight (Arkham Wiki)", "vistas": [
         ("traseira", T + "v05_veic_tanque_traseira.webp", (0.0, 0.25, 1.0, 1.0))]},
     "v02:tumbler": {"fonte": "Figura Hot Toys 1/6 licenciada (O Cavaleiro das Trevas)", "vistas": [
         ("34", T + "v02_tumbler_34.jpg", (0.0, 0.22, 1.0, 0.72))]},
     "v01:btas": {"fonte": "Batman: The Animated Series (DCAU Wiki e Batman Wiki)", "vistas": [
-        ("traseira", "novas/ref_btas_lateral.webp", None)]},
+        ("lateral", "novas/ref_btas_lateral.webp", None)]},
 }
 
 # Imagens de quadrinho ou de cena com fundo carregado: o recorte automático quebra a figura, então elas entram
@@ -80,7 +80,7 @@ PAINEL = {"v01_tnba", "v03_exo", "v04_armadura", "v07_hush", "v07_thrasher", "v0
           "v08_pesado_veic", "v10_batmoto_veic"}
 
 # Vista real da imagem do acervo, quando não for 3/4.
-VISTA_ACERVO = {"v01:tnba": "frontal"}
+VISTA_ACERVO = {"v01:tnba": "frontal", "v05:perseguicao": "lateral"}
 
 ROTULOS_ANG = {"frente": "FRENTE", "34": "3/4", "perfil": "PERFIL", "34costas": "3/4 COSTAS", "costas": "COSTAS",
                "34costas2": "3/4 COSTAS", "perfil2": "PERFIL", "342": "3/4"}
@@ -223,8 +223,8 @@ def main():
         destino = SAIDA / f"holo_{chave}.webp"
         if como_painel:
             return gravar(chave, ajustar(painel(abrir(origem, recorte)), alvo_h, alvo_w)), None
-        # recortes já gerados são reaproveitados; use --refazer para regenerar tudo
-        if destino.exists() and "--refazer" not in sys.argv:
+        # recortes já gerados são reaproveitados; use o argumento refazer para regenerar tudo
+        if destino.exists() and "refazer" not in sys.argv[1:]:
             im = Image.open(destino).convert("RGBA")
             gerados.append({"chave": f"holo_{chave}", "tipo": "holo", "bytes": destino.stat().st_size})
             return f"holo_{chave}", im

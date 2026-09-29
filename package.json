@@ -1,10 +1,11 @@
 {
   "name": "dashboard-batman-multiverso",
   "version": "1.0.0",
-  "description": "O Panteão das Sombras: showroom 3D do multiverso do Batman (Wayne Tech HUD e 3D Vault)",
+  "description": "O Panteão das Sombras: showroom holográfico 2.5D do multiverso do Batman (Wayne Tech HUD)",
   "scripts": {
     "assets": "python tools/processar_assets.py",
     "avatares": "python tools/processar_avatares.py",
+    "holos": "python tools/processar_holos.py",
     "build": "node tools/build.mjs"
   },
   "repository": {
@@ -22,8 +23,7 @@
     "@fontsource/inter": "^5.3.0",
     "@fontsource/orbitron": "^5.3.0",
     "@fontsource/rajdhani": "^5.3.0",
-    "esbuild": "^0.28.2",
-    "three": "^0.186.1"
+    "esbuild": "^0.28.2"
   },
   "private": true
 }

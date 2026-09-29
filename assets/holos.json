@@ -1406,8 +1406,8 @@
      "asp": 1.7321
     },
     {
-     "id": "traseira",
-     "img": "holo_v01_btas_traseira",
+     "id": "lateral",
+     "img": "holo_v01_btas_lateral",
      "asp": 3.3198
     }
    ]
@@ -1473,11 +1473,6 @@
   "v05:perseguicao": {
    "fonte": "Capturas de Batman: Arkham Knight (Arkham Wiki)",
    "vistas": [
-    {
-     "id": "34",
-     "img": "holo_v05_perseguicao_34",
-     "asp": 2.7451
-    },
     {
      "id": "lateral",
      "img": "holo_v05_perseguicao_lateral",
